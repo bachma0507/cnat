@@ -98,7 +98,7 @@ class success: UIViewController {
             
         }
     
-    var myGame = PFObject(className: "game")
+    //var myGame = PFObject(className: "game")
     var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())
         
@@ -129,6 +129,7 @@ class success: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         
     }

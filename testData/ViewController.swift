@@ -64,6 +64,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     if error == nil {
                         // Hooray! Let them use the app now.
                         
+                        var myGame = PFObject(className:"game")
+                        myGame["player"] = PFUser.currentUser()
+                        
+                        myGame["letter"] = "NO LETTER"
+                        myGame["field1"] = "empty"
+                        myGame["field2"] = "empty"
+                        myGame["field3"] = "empty"
+                        myGame["field4"] = "empty"
+                        myGame["field5"] = "empty"
+                        myGame["field6"] = "empty"
+                        myGame["field7"] = "empty"
+                        myGame["field8"] = "empty"
+                        myGame["field9"] = "empty"
+                        myGame["field10"] = "empty"
+                        
+                        myGame.saveInBackgroundWithBlock {
+                            (success: Bool, error: NSError!) -> Void in
+                            if (success) {
+                                // The object has been saved.
+                            } else {
+                                // There was a problem, check error.description
+                            }
+                        }
+
+                        
+                        
+                        
+                        
+                        
                         self.performSegueWithIdentifier("success", sender: self)
                         
                     } else if error != nil {

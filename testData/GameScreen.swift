@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+let kSuccessTitle = "Your Score!"
 
 class GameScreen: UIViewController, UITextFieldDelegate {
     
@@ -61,12 +64,40 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var timerLabel: UILabel!
     
+    @IBOutlet var calculateScoreButton: UIButton!
+    
+    @IBAction func calculateScore(sender: AnyObject) {
+        
+        
+        var scoreInt1 = score1Textfield.text.toInt()
+        var scoreInt2 = score2Textfield.text.toInt()
+        var scoreInt3 = score3Textfield.text.toInt()
+        
+        var scoreTotal = scoreInt1! + scoreInt2! + scoreInt3!
+        
+        println("Total is \(scoreTotal)")
+        
+        
+        //let alert = SCLAlertView()
+        
+        //alert.showSuccess(kSuccessTitle, subTitle:"\(scoreTotal)")
+        
+                    let alert = UIAlertView()
+                    alert.title = "Your Score!"
+                    alert.message = "Your total is \(scoreTotal)"
+                    alert.addButtonWithTitle("Done")
+                    alert.show()
+        
+        
+        
+        calculateScoreButton.hidden = true
+    }
     
 //    @IBAction func refreshButtonPressed(sender: AnyObject) {
+//
 //        
-//        
-//        
-//        
+//
+//
 //        field1Textfield.text = nil
 //        score1Textfield.text = nil
 //        
@@ -111,7 +142,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
         timerLabel.text = "\(count)"
         
-        if count == 60{
+        if count == 30{
             
             field1Textfield.enabled = false
             field2Textfield.enabled = false
@@ -126,6 +157,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
             
             newButton.enabled = true
             mainViewButton.enabled = true
+            calculateScoreButton.hidden = false
             
             pause(self)
         }
@@ -158,6 +190,8 @@ class GameScreen: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func updateButtonPressed(sender: AnyObject) {
+        
+        calculateScoreButton.hidden = true
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
@@ -246,7 +280,9 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        textField.delegate = self
+        //textField.delegate = self
+        
+        calculateScoreButton.hidden = true
         
         
         var query = PFQuery(className: "game")

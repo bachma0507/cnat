@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -166,25 +166,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-196" y="55"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="BQF-VO-Mai">
-            <objects>
-                <viewController id="G8a-Mn-EOd" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KPa-Dc-2cM"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hpb-C0-LUj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dpO-dq-v1L">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BJt-hm-oKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="507" y="55"/>
         </scene>
         <!--Game Screen-->
         <scene sceneID="gBI-w6-6IP">
@@ -441,6 +422,15 @@
                                     <segue destination="uuz-YX-Hye" kind="presentation" id="TIH-Ri-1KF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-qW-5W9">
+                                <rect key="frame" x="110" y="539" width="109" height="22"/>
+                                <state key="normal" title="Calculate Score">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculateScore:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="VYV-Dp-XA7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -489,6 +479,7 @@
                             <constraint firstItem="4WP-2Y-iWA" firstAttribute="top" secondItem="Enk-6J-h02" secondAttribute="bottom" constant="17" id="Iq2-eV-n4M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="i5O-rl-g1W" secondAttribute="trailing" constant="100" id="Lnr-3z-593"/>
                             <constraint firstItem="MbS-Aj-uhm" firstAttribute="top" secondItem="f1Q-01-6K7" secondAttribute="bottom" constant="8" symbolic="YES" id="MBA-IM-9UG"/>
+                            <constraint firstItem="yie-qW-5W9" firstAttribute="centerX" secondItem="VBq-fB-mq6" secondAttribute="centerX" id="Mts-RS-dPz"/>
                             <constraint firstItem="IgT-E6-xqu" firstAttribute="trailing" secondItem="jVu-gJ-Dbo" secondAttribute="trailing" id="NZS-Xp-0Yo"/>
                             <constraint firstItem="uOF-lS-jUq" firstAttribute="leading" secondItem="rVm-XR-ZdB" secondAttribute="leading" id="Ota-2a-3Cg"/>
                             <constraint firstItem="Ift-0I-173" firstAttribute="trailing" secondItem="f1Q-01-6K7" secondAttribute="trailing" id="PaY-ZI-aL8"/>
@@ -500,6 +491,7 @@
                             <constraint firstItem="qWh-N4-nSr" firstAttribute="trailing" secondItem="Yj5-mt-ghB" secondAttribute="trailing" id="T5O-Op-4gK"/>
                             <constraint firstItem="SBn-lr-xLC" firstAttribute="leading" secondItem="IgT-E6-xqu" secondAttribute="leading" id="TdV-HY-3md"/>
                             <constraint firstItem="Ift-0I-173" firstAttribute="top" secondItem="n9z-4m-qsU" secondAttribute="bottom" constant="8" symbolic="YES" id="UPb-LB-JZs"/>
+                            <constraint firstItem="yie-qW-5W9" firstAttribute="top" secondItem="42i-3W-xSn" secondAttribute="bottom" constant="8" symbolic="YES" id="UqH-Xd-tXm"/>
                             <constraint firstItem="f1Q-01-6K7" firstAttribute="leading" secondItem="Ift-0I-173" secondAttribute="leading" id="WsW-Rf-I5I"/>
                             <constraint firstItem="db0-7g-u7o" firstAttribute="leading" secondItem="kKh-yp-GtX" secondAttribute="leading" id="Xbf-q3-GUG"/>
                             <constraint firstItem="Ift-0I-173" firstAttribute="centerX" secondItem="n9z-4m-qsU" secondAttribute="centerX" id="ZAv-NZ-lRs"/>
@@ -524,6 +516,7 @@
                             <constraint firstItem="MbS-Aj-uhm" firstAttribute="leading" secondItem="f1Q-01-6K7" secondAttribute="leading" id="hzb-8z-e2F"/>
                             <constraint firstItem="moK-uA-CpR" firstAttribute="top" secondItem="ZV1-K8-gkd" secondAttribute="bottom" constant="8" symbolic="YES" id="iFe-F1-T5d"/>
                             <constraint firstItem="LvC-zr-Vhv" firstAttribute="top" secondItem="U3D-d0-FxD" secondAttribute="bottom" constant="17" id="iZJ-Iu-vn8"/>
+                            <constraint firstItem="jdg-U6-JFP" firstAttribute="top" secondItem="yie-qW-5W9" secondAttribute="bottom" constant="7" id="jAA-Pr-4qJ"/>
                             <constraint firstItem="Enk-6J-h02" firstAttribute="leading" secondItem="uOF-lS-jUq" secondAttribute="leading" id="jPx-2E-zrI"/>
                             <constraint firstItem="GWk-xu-EQL" firstAttribute="leading" secondItem="4WP-2Y-iWA" secondAttribute="trailing" constant="8" symbolic="YES" id="jbT-Xf-6yk"/>
                             <constraint firstItem="U3D-d0-FxD" firstAttribute="top" secondItem="84k-th-4Kp" secondAttribute="bottom" constant="17" id="jlQ-PV-GZ2"/>
@@ -555,6 +548,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="calculateScoreButton" destination="yie-qW-5W9" id="Df2-Po-ffc"/>
                         <outlet property="field10Label" destination="VFP-KX-QXv" id="LYI-JP-G88"/>
                         <outlet property="field10Textfield" destination="izb-hV-fVm" id="grS-O2-i5X"/>
                         <outlet property="field1Label" destination="OBf-Xq-cw7" id="PhO-3v-Ev0"/>
@@ -844,6 +838,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3S2-9V-7cg"/>
+        <segue reference="TIH-Ri-1KF"/>
     </inferredMetricsTieBreakers>
 </document>

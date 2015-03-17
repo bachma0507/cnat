@@ -26,7 +26,7 @@ class fieldnames : UIViewController, UITextFieldDelegate   {
     @IBAction func doneButtonPressed(sender: AnyObject) {
         
         
-        var myGame = PFObject(className: "game")
+        //var myGame = PFObject(className: "game")
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())
         
@@ -81,31 +81,73 @@ class fieldnames : UIViewController, UITextFieldDelegate   {
         //self.textField.delegate = self
         
         var myGame = PFObject(className:"game")
-        myGame["letter"] = "NO LETTER"
-        myGame["field1"] = "empty"
-        myGame["field2"] = "empty"
-        myGame["field3"] = "empty"
-        myGame["field4"] = "empty"
-        myGame["field5"] = "empty"
-        myGame["field6"] = "empty"
-        myGame["field7"] = "empty"
-        myGame["field8"] = "empty"
-        myGame["field9"] = "empty"
-        myGame["field10"] = "empty"
         
-        myGame["player"] = PFUser.currentUser()
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo: PFUser.currentUser())
         
-        myGame.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                // The object has been saved.
-            } else {
-                // There was a problem, check error.description
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            
+            if error != nil {
+                NSLog("%@", error)
+            }
+            else {
+                for object in objects {
+                    
+//                    var myLetter = object["letter"]! as String
+//                    println(myLetter)
+                    
+                    var myField1 = object["field1"]! as String
+                    var myField2 = object["field2"]! as String
+                    var myField3 = object["field3"]! as String
+                    var myField4 = object["field4"]! as String
+                    var myField5 = object["field5"]! as String
+                    var myField6 = object["field6"]! as String
+                    var myField7 = object["field7"]! as String
+                    var myField8 = object["field8"]! as String
+                    var myField9 = object["field9"]! as String
+                    var myField10 = object["field10"]! as String
+                    
+                    //self.letterLabel.text = myLetter
+                    self.cat1TextField.text = myField1
+                    self.cat2TextField.text = myField2
+                    self.cat3TextField.text = myField3
+                    self.cat4TextField.text = myField4
+                    self.cat5TextField.text = myField5
+                    self.cat6TextField.text = myField6
+                    self.cat7TextField.text = myField7
+                    self.cat8TextField.text = myField8
+                    self.cat9TextField.text = myField9
+                    self.cat10TextField.text = myField10
+                }
             }
         }
+        
+//        myGame["letter"] = "NO LETTER"
+//        myGame["field1"] = "empty"
+//        myGame["field2"] = "empty"
+//        myGame["field3"] = "empty"
+//        myGame["field4"] = "empty"
+//        myGame["field5"] = "empty"
+//        myGame["field6"] = "empty"
+//        myGame["field7"] = "empty"
+//        myGame["field8"] = "empty"
+//        myGame["field9"] = "empty"
+//        myGame["field10"] = "empty"
+//        
+//        myGame["player"] = PFUser.currentUser()
+        
+//        myGame.saveInBackgroundWithBlock {
+//            (success: Bool, error: NSError!) -> Void in
+//            if (success) {
+//                // The object has been saved.
+//            } else {
+//                // There was a problem, check error.description
+//            }
+//        }
 
         
-            }
+    }
     
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
