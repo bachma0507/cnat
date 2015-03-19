@@ -66,32 +66,135 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var calculateScoreButton: UIButton!
     
+    @IBOutlet var roundLabel: UILabel!
+    
     @IBAction func calculateScore(sender: AnyObject) {
         
         
         var scoreInt1 = score1Textfield.text.toInt()
         var scoreInt2 = score2Textfield.text.toInt()
         var scoreInt3 = score3Textfield.text.toInt()
+        var scoreInt4 = score4Textfield.text.toInt()
+        var scoreInt5 = score5Textfield.text.toInt()
         
-        var scoreTotal = scoreInt1! + scoreInt2! + scoreInt3!
         
-        println("Total is \(scoreTotal)")
         
+        var roundTotal = scoreInt1! + scoreInt2! + scoreInt3! + scoreInt4! + scoreInt5!
+        
+        println("Total is \(roundTotal)")
+        
+        
+        
+        
+        NSUserDefaults.standardUserDefaults().setObject("\(roundTotal)", forKey: "\(roundLabel.text!)") // we are saving a variable called myName and we are giving it the value of "Bob"
+        NSUserDefaults.standardUserDefaults().synchronize()
+        //println(NSUserDefaults.standardUserDefaults().objectForKey("2")!)
+        
+        var score1 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("1")) as? String
+        var score1Int = score1?.toInt()
+        
+        if score1Int == nil {
+            
+            score1Int = 0
+        }
+        
+        println("Value of score1Int is \(score1Int!)")
+        
+        var score2 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("2")) as? String
+        var score2Int = score2?.toInt()
+        
+        if score2Int == nil {
+            
+            score2Int = 0
+        }
+        
+        println("Value of score2Int is \(score2Int!)")
+        
+        var score3 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as? String
+        var score3Int = score3?.toInt()
+        
+        if score3Int == nil {
+            
+            score3Int = 0
+        }
+        
+        var score4 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("4")) as? String
+        var score4Int = score4?.toInt()
+        
+        if score4Int == nil {
+            
+            score4Int = 0
+        }
+        
+        var score5 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("5")) as? String
+        var score5Int = score5?.toInt()
+        
+        if score5Int == nil {
+            
+            score5Int = 0
+        }
+        
+        var score6 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("6")) as? String
+        var score6Int = score6?.toInt()
+        
+        if score6Int == nil {
+            
+            score6Int = 0
+        }
+        
+        var score7 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("7")) as? String
+        var score7Int = score7?.toInt()
+        
+        if score7Int == nil {
+            
+            score7Int = 0
+        }
+        
+        var score8 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("8")) as? String
+        var score8Int = score8?.toInt()
+        
+        if score8Int == nil {
+            
+            score8Int = 0
+        }
+        
+        var score9 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("9")) as? String
+        var score9Int = score9?.toInt()
+        
+        if score9Int == nil {
+            
+            score9Int = 0
+        }
+        
+        var score10 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("10")) as? String
+        var score10Int = score10?.toInt()
+        
+        if score10Int == nil {
+            
+            score10Int = 0
+        }
+
+
+        
+        var totalScore1 = score1Int! + score2Int! + score3Int! + score4Int! + score5Int!
+        
+        var totalScore2 = score6Int! + score7Int! + score8Int! + score9Int!  + score10Int!
+        
+        var grandTotal = totalScore1 + totalScore2
         
         //let alert = SCLAlertView()
         
         //alert.showSuccess(kSuccessTitle, subTitle:"\(scoreTotal)")
         
-                    let alert = UIAlertView()
-                    alert.title = "Your Score!"
-                    alert.message = "Your total is \(scoreTotal)"
-                    alert.addButtonWithTitle("Done")
-                    alert.show()
-        
-        
+        let alert = UIAlertView()
+        alert.title = "Your Score"
+        alert.message = "Your Score for Round \(roundLabel.text!) is \(roundTotal). Your Grand Total for all rounds is \(grandTotal)"
+        alert.addButtonWithTitle("Done")
+        alert.show()
         
         calculateScoreButton.hidden = true
     }
+    
     
 //    @IBAction func refreshButtonPressed(sender: AnyObject) {
 //
@@ -202,10 +305,12 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                 for object in objects {
                     
                     var myLetter = object["letter"]! as String
+                    var myRound = object["Round"]! as String
                     //myLetter = object["letter"] as String
                     println(myLetter)
                     
                     self.letterLabel.text = myLetter
+                    self.roundLabel.text = myRound
                 }
                 //                else {
                 //                    println("%@", error)
@@ -294,6 +399,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                 for object in objects {
                     
                     var myLetter = object["letter"]! as String
+                    var myRound = object["Round"]! as String
                     //myLetter = object["letter"] as String
                     println(myLetter)
                     
@@ -309,6 +415,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                     var myField10 = object["field10"]! as String
                     
                     self.letterLabel.text = myLetter
+                    self.roundLabel.text = myRound
                     self.field1Label.text = myField1
                     self.field2Label.text = myField2
                     self.field3Label.text = myField3

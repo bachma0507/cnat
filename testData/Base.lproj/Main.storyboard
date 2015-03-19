@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-421" y="6"/>
+            <point key="canvasLocation" x="-541" y="35"/>
         </scene>
         <!--Success-->
         <scene sceneID="Pt8-Vl-boq">
@@ -133,6 +133,20 @@
                                     <segue destination="4LJ-4q-ocu" kind="presentation" id="8ED-9M-dK7"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOl-Sj-mpA">
+                                <rect key="frame" x="112" y="296" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUn-wv-7zR">
+                                <rect key="frame" x="124" y="358" width="73" height="30"/>
+                                <state key="normal" title="End Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="EndGame:" destination="uuz-YX-Hye" eventType="touchUpInside" id="nmr-dG-lFr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -161,6 +175,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="letterLabel" destination="iMv-zE-fHu" id="4K4-OL-5Fq"/>
+                        <outlet property="roundTextField" destination="TOl-Sj-mpA" id="MGg-iV-jaw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -431,6 +446,12 @@
                                     <action selector="calculateScore:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="VYV-Dp-XA7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f62-uT-MFr">
+                                <rect key="frame" x="16" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -572,6 +593,7 @@
                         <outlet property="letterLabel" destination="n9z-4m-qsU" id="yud-Lz-623"/>
                         <outlet property="mainViewButton" destination="42i-3W-xSn" id="X8L-bj-6eV"/>
                         <outlet property="newButton" destination="HnC-3t-zV4" id="Is1-gZ-b0Z"/>
+                        <outlet property="roundLabel" destination="f62-uT-MFr" id="e01-ZS-ZiL"/>
                         <outlet property="score10Textfield" destination="MfT-kj-BAl" id="jTB-jg-4E5"/>
                         <outlet property="score1Textfield" destination="Yj5-mt-ghB" id="LB0-uJ-cWg"/>
                         <outlet property="score2Textfield" destination="qWh-N4-nSr" id="0im-jR-6C1"/>
@@ -838,6 +860,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TIH-Ri-1KF"/>
+        <segue reference="bv6-HS-rhH"/>
     </inferredMetricsTieBreakers>
 </document>
