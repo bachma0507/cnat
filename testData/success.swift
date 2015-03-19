@@ -163,7 +163,7 @@ class success: UIViewController {
     
     func updateObject(){
         
-        var randomNumber = arc4random_uniform(3)
+        var randomNumber = arc4random_uniform(10)
         println("Random number is: \(randomNumber)")
         
         
@@ -186,6 +186,55 @@ class success: UIViewController {
         if Int(randomNumber) == 2 {
             
             letterLabel.text = "C"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 3 {
+            
+            letterLabel.text = "D"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 4 {
+            
+            letterLabel.text = "E"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 5 {
+            
+            letterLabel.text = "F"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 6 {
+            
+            letterLabel.text = "G"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 7 {
+            
+            letterLabel.text = "H"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 8 {
+            
+            letterLabel.text = "I"
+            println(letterLabel.text)
+            
+        }
+        
+        if Int(randomNumber) == 9 {
+            
+            letterLabel.text = "J"
             println(letterLabel.text)
             
         }
