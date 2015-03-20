@@ -17,7 +17,6 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var letterLabel: UILabel!
     
-    
     @IBOutlet var field1Label: UILabel!
     @IBOutlet var field1Textfield: UITextField!
     @IBOutlet var score1Textfield: UITextField!
@@ -68,6 +67,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var roundLabel: UILabel!
     
+    //MARK: Calculate Round and Total Scores
     @IBAction func calculateScore(sender: AnyObject) {
         
         
@@ -243,44 +243,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     }
     
     
-//    @IBAction func refreshButtonPressed(sender: AnyObject) {
-//
-//        
-//
-//
-//        field1Textfield.text = nil
-//        score1Textfield.text = nil
-//        
-//        field2Textfield.text = nil
-//        score2Textfield.text = nil
-//        
-//        field3Textfield.text = nil
-//        score3Textfield.text = nil
-//        
-//        field4Textfield.text = nil
-//        score4Textfield.text = nil
-//        
-//        field5Textfield.text = nil
-//        score5Textfield.text = nil
-//        
-//        field6Textfield.text = nil
-//        score6Textfield.text = nil
-//        
-//        field7Textfield.text = nil
-//        score7Textfield.text = nil
-//        
-//        field8Textfield.text = nil
-//        score8Textfield.text = nil
-//        
-//        field9Textfield.text = nil
-//        score9Textfield.text = nil
-//        
-//        field10Textfield.text = nil
-//        score10Textfield.text = nil
-//        
-//        
-//    }
-    
+//MARK: Timer functions
     
     var timer = NSTimer()
     
@@ -309,16 +272,135 @@ class GameScreen: UIViewController, UITextFieldDelegate {
             mainViewButton.enabled = true
             calculateScoreButton.hidden = false
             
-            /*score1Textfield.hidden = false
-            score2Textfield.hidden = false
-            score3Textfield.hidden = false
-            score4Textfield.hidden = false
-            score5Textfield.hidden = false
-            score6Textfield.hidden = false
-            score7Textfield.hidden = false
-            score8Textfield.hidden = false
-            score9Textfield.hidden = false
-            score10Textfield.hidden = false*/
+            var query = PFQuery(className: "game")
+            query.whereKey("player", equalTo:PFUser.currentUser())
+            
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                if !(error != nil) {
+                    for object in objects {
+                        
+                        var myField1 = object["field1"]! as String
+                        var myField2 = object["field2"]! as String
+                        var myField3 = object["field3"]! as String
+                        var myField4 = object["field4"]! as String
+                        var myField5 = object["field5"]! as String
+                        var myField6 = object["field6"]! as String
+                        var myField7 = object["field7"]! as String
+                        var myField8 = object["field8"]! as String
+                        var myField9 = object["field9"]! as String
+                        var myField10 = object["field10"]! as String
+                        
+                        self.field1Label.text = myField1
+                        self.field2Label.text = myField2
+                        self.field3Label.text = myField3
+                        self.field4Label.text = myField4
+                        self.field5Label.text = myField5
+                        self.field6Label.text = myField6
+                        self.field7Label.text = myField7
+                        self.field8Label.text = myField8
+                        self.field9Label.text = myField9
+                        self.field10Label.text = myField10
+                        
+                        
+                        if self.field1Label.text == "empty" || self.field1Label.text == "" {
+                            
+                            self.field1Label.hidden = true
+                            self.field1Textfield.hidden = true
+                            self.score1Textfield.hidden = true
+                            
+                        }
+                        else{
+                            
+                            self.score1Textfield.hidden = false
+                        }
+                        
+                        if self.field2Label.text == "empty" || self.field2Label.text == "" {
+                            
+                            self.field2Label.hidden = true
+                            self.field3Textfield.hidden = true
+                            self.score3Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field3Label.text == "empty" || self.field3Label.text == "" {
+                            
+                            self.field3Label.hidden = true
+                            self.field3Textfield.hidden = true
+                            self.score3Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field4Label.text == "empty" || self.field4Label.text == "" {
+                            
+                            self.field4Label.hidden = true
+                            self.field4Textfield.hidden = true
+                            self.score4Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field5Label.text == "empty" || self.field5Label.text == "" {
+                            
+                            self.field5Label.hidden = true
+                            self.field5Textfield.hidden = true
+                            self.score5Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field6Label.text == "empty" || self.field6Label.text == "" {
+                            
+                            self.field6Label.hidden = true
+                            self.field6Textfield.hidden = true
+                            self.score6Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field7Label.text == "empty" || self.field7Label.text == "" {
+                            
+                            self.field7Label.hidden = true
+                            self.field7Textfield.hidden = true
+                            self.score7Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field8Label.text == "empty" || self.field8Label.text == "" {
+                            
+                            self.field8Label.hidden = true
+                            self.field8Textfield.hidden = true
+                            self.score8Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field9Label.text == "empty" || self.field9Label.text == "" {
+                            
+                            self.field9Label.hidden = true
+                            self.field9Textfield.hidden = true
+                            self.score9Textfield.hidden = true
+                            
+                        }
+                        
+                        if self.field10Label.text == "empty" || self.field10Label.text == "" {
+                            
+                            self.field10Label.hidden = true
+                            self.field10Textfield.hidden = true
+                            self.score10Textfield.hidden = true
+                            
+                        }
+                        
+                        
+                    }
+                    //                else {
+                    //                    println("%@", error)
+                    //                }
+                }
+                    
+                else if error != nil {
+                    let errorString = "\(error)"
+                    SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                    // Show the errorString somewhere and let the user try again.
+                }
+            }
+
             
             pause(self)
         }
@@ -349,6 +431,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
     }
 
+    //MARK: Start new round
     
     @IBAction func updateButtonPressed(sender: AnyObject) {
         
@@ -519,6 +602,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score1Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score1Textfield.hidden = true
+                    }
                     
                     if self.field2Label.text == "empty" || self.field2Label.text == "" {
                         
@@ -617,7 +704,8 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
     }
     
-
+//MARK: Dismiss keyboard methods
+    
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
