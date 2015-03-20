@@ -71,22 +71,69 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     @IBAction func calculateScore(sender: AnyObject) {
         
         
-        var scoreInt1 = score1Textfield.text.toInt()
-        var scoreInt2 = score2Textfield.text.toInt()
-        var scoreInt3 = score3Textfield.text.toInt()
-        var scoreInt4 = score4Textfield.text.toInt()
-        var scoreInt5 = score5Textfield.text.toInt()
+        var scoreInt1 = score1Textfield?.text.toInt()
+        if scoreInt1 == nil {
+            scoreInt1 = 0
+        }
+        
+        var scoreInt2 = score2Textfield?.text.toInt()
+        if scoreInt2 == nil {
+            scoreInt2 = 0
+        }
+        
+        var scoreInt3 = score3Textfield?.text.toInt()
+        if scoreInt3 == nil {
+            scoreInt3 = 0
+        }
+        
+        var scoreInt4 = score4Textfield?.text.toInt()
+        if scoreInt4 == nil {
+            scoreInt4 = 0
+        }
+        
+        var scoreInt5 = score5Textfield?.text.toInt()
+        if scoreInt5 == nil {
+            scoreInt5 = 0
+        }
+        
+        var scoreInt6 = score6Textfield?.text.toInt()
+        if scoreInt6 == nil {
+            scoreInt6 = 0
+        }
+        
+        var scoreInt7 = score7Textfield?.text.toInt()
+        if scoreInt7 == nil {
+            scoreInt7 = 0
+        }
+        
+        var scoreInt8 = score8Textfield?.text.toInt()
+        if scoreInt8 == nil {
+            scoreInt8 = 0
+        }
+        
+        var scoreInt9 = score9Textfield?.text.toInt()
+        if scoreInt9 == nil {
+            scoreInt9 = 0
+        }
+        
+        var scoreInt10 = score10Textfield?.text.toInt()
+        if scoreInt10 == nil {
+            scoreInt10 = 0
+        }
         
         
         
-        var roundTotal = scoreInt1! + scoreInt2! + scoreInt3! + scoreInt4! + scoreInt5!
+        var roundTotal1 = scoreInt1! + scoreInt2! + scoreInt3! + scoreInt4! + scoreInt5!
+        var roundTotal2 = scoreInt6! + scoreInt7! + scoreInt8! + scoreInt9! + scoreInt10!
         
-        println("Total is \(roundTotal)")
+        var totalRoundScore = roundTotal1 + roundTotal2
+        
+        println("Total is \(totalRoundScore)")
         
         
         
         
-        NSUserDefaults.standardUserDefaults().setObject("\(roundTotal)", forKey: "\(roundLabel.text!)") // we are saving a variable called myName and we are giving it the value of "Bob"
+        NSUserDefaults.standardUserDefaults().setObject("\(totalRoundScore)", forKey: "\(roundLabel.text!)") // we are saving a variable called myName and we are giving it the value of "Bob"
         NSUserDefaults.standardUserDefaults().synchronize()
         //println(NSUserDefaults.standardUserDefaults().objectForKey("2")!)
         
@@ -188,7 +235,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
         let alert = UIAlertView()
         alert.title = "Your Score"
-        alert.message = "Your Score for Round \(roundLabel.text!) is \(roundTotal). Your Grand Total for all rounds is \(grandTotal)"
+        alert.message = "Your Score for Round \(roundLabel.text!) is \(totalRoundScore). Your Grand Total for all rounds is \(grandTotal)"
         alert.addButtonWithTitle("Done")
         alert.show()
         
