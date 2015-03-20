@@ -322,6 +322,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score3Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score2Textfield.hidden = false
+                        }
+
                         
                         if self.field3Label.text == "empty" || self.field3Label.text == "" {
                             
@@ -330,6 +335,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score3Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score3Textfield.hidden = false
+                        }
+
                         
                         if self.field4Label.text == "empty" || self.field4Label.text == "" {
                             
@@ -338,6 +348,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score4Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score4Textfield.hidden = false
+                        }
+
                         
                         if self.field5Label.text == "empty" || self.field5Label.text == "" {
                             
@@ -346,6 +361,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score5Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score5Textfield.hidden = false
+                        }
+
                         
                         if self.field6Label.text == "empty" || self.field6Label.text == "" {
                             
@@ -354,6 +374,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score6Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score6Textfield.hidden = false
+                        }
+
                         
                         if self.field7Label.text == "empty" || self.field7Label.text == "" {
                             
@@ -362,6 +387,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score7Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score7Textfield.hidden = false
+                        }
+
                         
                         if self.field8Label.text == "empty" || self.field8Label.text == "" {
                             
@@ -370,6 +400,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score8Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score8Textfield.hidden = false
+                        }
+
                         
                         if self.field9Label.text == "empty" || self.field9Label.text == "" {
                             
@@ -378,6 +413,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score9Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score9Textfield.hidden = false
+                        }
+
                         
                         if self.field10Label.text == "empty" || self.field10Label.text == "" {
                             
@@ -386,6 +426,11 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                             self.score10Textfield.hidden = true
                             
                         }
+                        else{
+                            
+                            self.score10Textfield.hidden = false
+                        }
+
                         
                         
                     }
@@ -437,16 +482,6 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
         calculateScoreButton.hidden = true
         
-        /*score1Textfield.hidden = true
-        score2Textfield.hidden = true
-        score3Textfield.hidden = true
-        score4Textfield.hidden = true
-        score5Textfield.hidden = true
-        score6Textfield.hidden = true
-        score7Textfield.hidden = true
-        score8Textfield.hidden = true
-        score9Textfield.hidden = true
-        score10Textfield.hidden = true*/
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
@@ -497,33 +532,43 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         
         field1Textfield.text = nil
         score1Textfield.text = nil
+        score1Textfield.hidden = true
         
         field2Textfield.text = nil
         score2Textfield.text = nil
+        score2Textfield.hidden = true
         
         field3Textfield.text = nil
         score3Textfield.text = nil
+        score3Textfield.hidden = true
         
         field4Textfield.text = nil
         score4Textfield.text = nil
+        score4Textfield.hidden = true
         
         field5Textfield.text = nil
         score5Textfield.text = nil
+        score5Textfield.hidden = true
         
         field6Textfield.text = nil
         score6Textfield.text = nil
+        score6Textfield.hidden = true
         
         field7Textfield.text = nil
         score7Textfield.text = nil
+        score7Textfield.hidden = true
         
         field8Textfield.text = nil
         score8Textfield.text = nil
+        score8Textfield.hidden = true
         
         field9Textfield.text = nil
         score9Textfield.text = nil
+        score9Textfield.hidden = true
         
         field10Textfield.text = nil
         score10Textfield.text = nil
+        score10Textfield.hidden = true
         
     }
     
@@ -614,6 +659,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score3Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score2Textfield.hidden = true
+                    }
                     
                     if self.field3Label.text == "empty" || self.field3Label.text == "" {
                         
@@ -621,6 +670,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.field3Textfield.hidden = true
                         self.score3Textfield.hidden = true
                         
+                    }
+                    else{
+                        
+                        self.score3Textfield.hidden = true
                     }
                     
                     if self.field4Label.text == "empty" || self.field4Label.text == "" {
@@ -630,6 +683,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score4Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score4Textfield.hidden = true
+                    }
                     
                     if self.field5Label.text == "empty" || self.field5Label.text == "" {
                         
@@ -637,6 +694,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.field5Textfield.hidden = true
                         self.score5Textfield.hidden = true
                         
+                    }
+                    else{
+                        
+                        self.score5Textfield.hidden = true
                     }
                     
                     if self.field6Label.text == "empty" || self.field6Label.text == "" {
@@ -646,6 +707,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score6Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score6Textfield.hidden = true
+                    }
                     
                     if self.field7Label.text == "empty" || self.field7Label.text == "" {
                         
@@ -653,6 +718,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.field7Textfield.hidden = true
                         self.score7Textfield.hidden = true
                         
+                    }
+                    else{
+                        
+                        self.score7Textfield.hidden = true
                     }
                     
                     if self.field8Label.text == "empty" || self.field8Label.text == "" {
@@ -662,6 +731,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score8Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score8Textfield.hidden = true
+                    }
                     
                     if self.field9Label.text == "empty" || self.field9Label.text == "" {
                         
@@ -670,6 +743,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.score9Textfield.hidden = true
                         
                     }
+                    else{
+                        
+                        self.score9Textfield.hidden = true
+                    }
                     
                     if self.field10Label.text == "empty" || self.field10Label.text == "" {
                         
@@ -677,6 +754,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         self.field10Textfield.hidden = true
                         self.score10Textfield.hidden = true
                         
+                    }
+                    else{
+                        
+                        self.score10Textfield.hidden = true
                     }
                     
                     
