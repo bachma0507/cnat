@@ -309,6 +309,17 @@ class GameScreen: UIViewController, UITextFieldDelegate {
             mainViewButton.enabled = true
             calculateScoreButton.hidden = false
             
+            /*score1Textfield.hidden = false
+            score2Textfield.hidden = false
+            score3Textfield.hidden = false
+            score4Textfield.hidden = false
+            score5Textfield.hidden = false
+            score6Textfield.hidden = false
+            score7Textfield.hidden = false
+            score8Textfield.hidden = false
+            score9Textfield.hidden = false
+            score10Textfield.hidden = false*/
+            
             pause(self)
         }
         
@@ -342,6 +353,17 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     @IBAction func updateButtonPressed(sender: AnyObject) {
         
         calculateScoreButton.hidden = true
+        
+        /*score1Textfield.hidden = true
+        score2Textfield.hidden = true
+        score3Textfield.hidden = true
+        score4Textfield.hidden = true
+        score5Textfield.hidden = true
+        score6Textfield.hidden = true
+        score7Textfield.hidden = true
+        score8Textfield.hidden = true
+        score9Textfield.hidden = true
+        score10Textfield.hidden = true*/
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
@@ -387,7 +409,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         field6Textfield.enabled = true
         field7Textfield.enabled = true
         field8Textfield.enabled = true
-        field8Textfield.enabled = true
+        field9Textfield.enabled = true
         field10Textfield.enabled = true
         
         field1Textfield.text = nil
@@ -435,6 +457,16 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         //textField.delegate = self
         
         calculateScoreButton.hidden = true
+        /*score1Textfield.hidden = true
+        score2Textfield.hidden = true
+        score3Textfield.hidden = true
+        score4Textfield.hidden = true
+        score5Textfield.hidden = true
+        score6Textfield.hidden = true
+        score7Textfield.hidden = true
+        score8Textfield.hidden = true
+        score9Textfield.hidden = true
+        score10Textfield.hidden = true*/
         
         
         var query = PFQuery(className: "game")

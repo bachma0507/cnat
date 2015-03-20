@@ -138,9 +138,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BYm-Ny-USF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <navigationItem title="Home" id="svH-rs-VjZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="aHA-pk-pVI"/>
-                                    </navigationItem>
+                                    <navigationItem title="Home" id="svH-rs-VjZ"/>
                                 </items>
                             </navigationBar>
                         </subviews>
