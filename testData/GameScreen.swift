@@ -624,9 +624,9 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                 for object in objects {
                     
                     var myLetter = object["letter"]! as? String
-                    if myLetter == "" {
+                    /*if myLetter == "" {
                     SCLAlertView().showError("Oops...", subTitle:"Please tap Pick Letter begore starting the round", closeButtonTitle:"OK")
-                    }
+                    }*/
                     
                     var myRound = object["Round"]! as? String
                     
@@ -634,7 +634,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                         myRound = "1"
                     }
                     //myLetter = object["letter"] as String
-                    println(myLetter)
+                    println(myLetter!)
                     
                     var myField1 = object["field1"]! as String
                     var myField2 = object["field2"]! as String
@@ -647,7 +647,7 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                     var myField9 = object["field9"]! as String
                     var myField10 = object["field10"]! as String
                     
-                    self.letterLabel.text = myLetter
+                    self.letterLabel.text = myLetter!
                     self.roundLabel.text = myRound
                     self.field1Label.text = myField1
                     self.field2Label.text = myField2
@@ -661,10 +661,10 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                     self.field10Label.text = myField10
                     
                     
-                    if self.letterLabel.text == "NO LETTER" {
+                    /*if self.letterLabel.text == "NO LETTER" {
                         
                         SCLAlertView().showError("Oops...", subTitle:"No letter was picked! Please go back to the Main View and choose Pick Letter", closeButtonTitle:"OK")
-                    }
+                    }*/
                     
                     if self.field1Label.text == "empty" || self.field1Label.text == "" {
                         

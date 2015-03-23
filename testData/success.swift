@@ -21,53 +21,35 @@ class success: UIViewController {
     
     @IBOutlet var gameViewButton: UIButton!
     
-//    @IBAction func saveButtonPressed(sender: AnyObject) {
-//        
-//        var randomNumber = arc4random_uniform(3)
-//        println("Random number is: \(randomNumber)")
-//        
-//        
-//        if Int(randomNumber) == 0 {
-//            
-//            
-//            letterLabel.text = "A"
-//            
-//            println(letterLabel.text)
-//            
-//        }
-//        
-//        if Int(randomNumber) == 1 {
-//            
-//            letterLabel.text = "B"
-//            println(letterLabel.text)
-//            
-//        }
-//        
-//        if Int(randomNumber) == 2 {
-//            
-//            letterLabel.text = "C"
-//            println(letterLabel.text)
-//            
-//        }
-//
-//        
-//        
-//        var myGame = PFObject(className:"game")
-//                myGame["letter"] = letterLabel.text
-//                myGame["field1"] = letterTextField.text
-//                myGame["player"] = PFUser.currentUser()
-//
-//                myGame.saveInBackgroundWithBlock {
-//                    (success: Bool, error: NSError!) -> Void in
-//                    if (success) {
-//                        // The object has been saved.
-//                    } else {
-//                        // There was a problem, check error.description
-//                    }
-//                }
-//
-//        
-//    }
+    @IBAction func gameViewButtonClicked(sender: AnyObject) {
+        
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo:PFUser.currentUser())
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if !(error != nil) {
+                for object in objects {
+                    
+                    var myLetter = object["letter"]! as? String
+                    
+                    println("the value of letter when game view tapped is \(myLetter!)")
+                    
+                    if myLetter! == "NO LETTER" || myLetter! == "" {
+                        
+                        //SCLAlertView().showError("Oops...", subTitle:"Please enter tap on Pick Letter before starting round.", closeButtonTitle:"OK")
+                        let alert = UIAlertView()
+                        alert.title = "Oops!"
+                        alert.message = "Please tap on Pick Letter before starting round."
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
     
     func saveRound() {
         
@@ -324,6 +306,14 @@ class success: UIViewController {
             if !(error != nil) {
                 for object in objects {
                     
+                    var mySeconds = object["seconds"]! as? String
+                    
+                    var mySecondsInt = mySeconds?.toInt()
+                    
+                    if mySecondsInt == nil{
+                        
+                        mySecondsInt = 60
+                    }
                     
                     var myRound = object["Round"]! as? String
                     
@@ -337,6 +327,8 @@ class success: UIViewController {
                     var newRound = myRoundInt! + 1
                     
                     self.roundTextField.text = "\(newRound)"
+                    
+                    self.secondsTextField.text = "\(mySecondsInt!)"
                     
                     if newRound > 10 {
                         
