@@ -17,6 +17,10 @@ class success: UIViewController {
     
     @IBOutlet var roundTextField: UITextField!
     
+    @IBOutlet var secondsTextField: UITextField!
+    
+    @IBOutlet var gameViewButton: UIButton!
+    
 //    @IBAction func saveButtonPressed(sender: AnyObject) {
 //        
 //        var randomNumber = arc4random_uniform(3)
@@ -106,6 +110,43 @@ class success: UIViewController {
         
     }
     
+    func saveSeconds(){
+        
+        if secondsTextField.text == ""{
+            
+            SCLAlertView().showError("Oops...", subTitle:"Please enter Seconds before Picking Letter", closeButtonTitle:"OK")
+        }
+            
+        else{
+            
+            var query = PFQuery(className: "game")
+            query.whereKey("player", equalTo: PFUser.currentUser())
+            
+            query.getFirstObjectInBackgroundWithBlock {
+                (myGame: PFObject!, error: NSError!) -> Void in
+                if error != nil {
+                    NSLog("%@", error)
+                } else {
+                    myGame["seconds"] = self.secondsTextField.text
+                    myGame.saveInBackgroundWithBlock {
+                        (success: Bool, error: NSError!) -> Void in
+                        if (success) {
+                            // The object has been saved.
+                        } else if error != nil {
+                            let errorString = "\(error)"
+                            SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                            // Show the errorString somewhere and let the user try again.
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        
+        
+    }
+    
     func finishGame(){
         
         roundTextField.text = "1"
@@ -131,6 +172,7 @@ class success: UIViewController {
             } else {
                 myGame.removeObjectForKey("Round")
                 myGame.removeObjectForKey("letter")
+                myGame.removeObjectForKey("seconds")
                 myGame.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
@@ -144,7 +186,7 @@ class success: UIViewController {
                 
             }
         }
-
+        
     }
     
     @IBAction func EndGame(sender: AnyObject) {
@@ -157,7 +199,9 @@ class success: UIViewController {
         
         updateObject()
         
-        saveRound() 
+        saveRound()
+        
+        saveSeconds()
         
     }
     

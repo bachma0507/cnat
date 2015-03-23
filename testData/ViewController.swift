@@ -68,6 +68,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         myGame["player"] = PFUser.currentUser()
                         
                         myGame["letter"] = "NO LETTER"
+                        myGame["Round"] = "0"
+                        myGame["seconds"] = "60"
                         myGame["field1"] = "empty"
                         myGame["field2"] = "empty"
                         myGame["field3"] = "empty"

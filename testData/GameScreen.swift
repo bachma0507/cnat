@@ -249,13 +249,31 @@ class GameScreen: UIViewController, UITextFieldDelegate {
     
     var count = 0
     
+    var mySecondsInt = 0
+
     func updateTime() {
         
         count++
         
         timerLabel.text = "\(count)"
         
-        if count == 30{
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo:PFUser.currentUser())
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if !(error != nil) {
+                for object in objects {
+                    var mySeconds = object["seconds"]! as String
+                    self.mySecondsInt = mySeconds.toInt()!
+                    
+                    
+                    }
+                
+                }
+            }
+        
+        if count == self.mySecondsInt{
             
             field1Textfield.enabled = false
             field2Textfield.enabled = false
@@ -605,8 +623,16 @@ class GameScreen: UIViewController, UITextFieldDelegate {
             if !(error != nil) {
                 for object in objects {
                     
-                    var myLetter = object["letter"]! as String
-                    var myRound = object["Round"]! as String
+                    var myLetter = object["letter"]! as? String
+                    if myLetter == "" {
+                    SCLAlertView().showError("Oops...", subTitle:"Please tap Pick Letter begore starting the round", closeButtonTitle:"OK")
+                    }
+                    
+                    var myRound = object["Round"]! as? String
+                    
+                    if myRound == "" {
+                        myRound = "1"
+                    }
                     //myLetter = object["letter"] as String
                     println(myLetter)
                     

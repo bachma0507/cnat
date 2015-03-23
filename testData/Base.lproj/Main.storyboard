@@ -141,6 +141,11 @@
                                     <navigationItem title="Home" id="svH-rs-VjZ"/>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-to-nuw">
+                                <rect key="frame" x="112" y="56" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -163,8 +168,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="gameViewButton" destination="IbX-aO-VH1" id="zJC-Ig-hUh"/>
                         <outlet property="letterLabel" destination="iMv-zE-fHu" id="4K4-OL-5Fq"/>
                         <outlet property="roundTextField" destination="TOl-Sj-mpA" id="MGg-iV-jaw"/>
+                        <outlet property="secondsTextField" destination="Sfd-to-nuw" id="XQc-O0-7WA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
