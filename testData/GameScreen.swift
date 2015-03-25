@@ -552,6 +552,22 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
                     
                     self.letterLabel.text = myLetter
                     self.roundLabel.text = myRound
+                    
+                    if self.roundLabel.text == "1" {
+                        
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("1")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("2")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("3")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("4")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("5")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("6")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("7")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("8")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("9")
+                        NSUserDefaults.standardUserDefaults().removeObjectForKey("10")
+                        
+                    }
+                    
                 }
                 //                else {
                 //                    println("%@", error)
