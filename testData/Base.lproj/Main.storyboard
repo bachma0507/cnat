@@ -47,7 +47,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.71125587807807733" blue="0.28135067175031336" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -92,7 +92,7 @@
                                     <constraint firstAttribute="height" constant="21" id="UXz-v7-VSt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.31098992879999998" green="1" blue="0.61186604499999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QU-gH-aBH">
@@ -148,7 +148,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.31098992881834786" green="1" blue="0.61186604500005748" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8QU-gH-aBH" firstAttribute="leading" secondItem="0AY-hM-ZZE" secondAttribute="leading" constant="94" id="7Y7-cj-VDd"/>
                             <constraint firstItem="esL-1e-oXG" firstAttribute="top" secondItem="8QU-gH-aBH" secondAttribute="bottom" constant="29" id="AnO-ID-tyD"/>
@@ -370,7 +370,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HnC-3t-zV4">
-                                                <rect key="frame" x="136" y="471" width="67" height="30"/>
+                                                <rect key="frame" x="136" y="454" width="67" height="30"/>
                                                 <state key="normal" title="New">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -385,7 +385,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42i-3W-xSn">
-                                                <rect key="frame" x="131" y="501" width="76" height="30"/>
+                                                <rect key="frame" x="131" y="484" width="76" height="30"/>
                                                 <state key="normal" title="Main View">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -394,7 +394,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-qW-5W9">
-                                                <rect key="frame" x="119" y="539" width="109" height="22"/>
+                                                <rect key="frame" x="119" y="509" width="109" height="22"/>
                                                 <state key="normal" title="Calculate Score">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -408,8 +408,17 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaF-iy-EH2">
+                                                <rect key="frame" x="125" y="525" width="89" height="30"/>
+                                                <state key="normal" title="LeaderBoard">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="showLeaderboard:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="XGA-Qu-ZMl"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="315" id="KTN-tY-Nfh"/>
                                             <constraint firstAttribute="height" constant="800" id="cMt-WQ-7S6"/>
@@ -424,7 +433,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="KLU-gq-ozW" secondAttribute="trailing" constant="-16" id="A1k-qd-Yej"/>
                             <constraint firstItem="KLU-gq-ozW" firstAttribute="top" secondItem="5Jv-By-uSi" secondAttribute="topMargin" constant="2" id="El6-2K-BBh"/>
@@ -629,13 +638,14 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.21286965533514879" green="0.74590564946421556" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="JgN-Hf-2nK"/>
                                             <constraint firstAttribute="width" constant="328" id="Luz-WW-w25"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.21176470589999999" green="0.74509803919999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="LE0-px-RK7" firstAttribute="leading" secondItem="HVv-le-Dbi" secondAttribute="leading" id="DZF-7K-7rq"/>
                                     <constraint firstAttribute="bottom" secondItem="LE0-px-RK7" secondAttribute="bottom" id="F9k-qo-MnA"/>
@@ -644,7 +654,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.21176470588235294" green="0.74509803921568629" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="HVv-le-Dbi" secondAttribute="trailing" constant="-20" id="6Vp-mm-Tdr"/>
                             <constraint firstItem="96M-5V-eSo" firstAttribute="top" secondItem="HVv-le-Dbi" secondAttribute="bottom" constant="13" id="K6L-rh-Ufs"/>

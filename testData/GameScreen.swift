@@ -8,10 +8,16 @@
 
 import Foundation
 import UIKit
+import GameKit
+
 
 let kSuccessTitle = "Your Score!"
 
-class GameScreen: UIViewController, UITextFieldDelegate {
+class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerDelegate {
+    
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
+    
     
     var textField: UITextField!
     
@@ -239,6 +245,22 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         alert.addButtonWithTitle("Done")
         alert.show()
         
+        
+        var leaderboardID = "wordcon_LB_1"
+        var sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(totalRoundScore)
+        
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError!) -> Void in
+            if error != nil {
+                println(error.localizedDescription)
+            } else {
+                println("Score submitted")
+                
+            }
+        })
+        
         calculateScoreButton.hidden = true
     }
     
@@ -253,9 +275,12 @@ class GameScreen: UIViewController, UITextFieldDelegate {
 
     func updateTime() {
         
+        
         count++
         
         timerLabel.text = "\(count)"
+        
+        timerLabel.textColor = UIColor .greenColor()
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
@@ -273,6 +298,17 @@ class GameScreen: UIViewController, UITextFieldDelegate {
                 }
             }
         
+        var redzone = self.mySecondsInt - 10
+        var yellowzone = self.mySecondsInt - 20
+        
+        if count >= yellowzone && count <= redzone {
+            
+            timerLabel.textColor = UIColor .yellowColor()
+        }
+        
+        if count >= redzone{
+            timerLabel.textColor = UIColor .redColor()
+        }
         if count == self.mySecondsInt{
             
             field1Textfield.enabled = false
@@ -597,6 +633,8 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.authenticateLocalPlayer()
+        
         var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
         
@@ -832,5 +870,49 @@ class GameScreen: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String!, error: NSError!) -> Void in
+                    if error != nil {
+                        println(error)
+                    } else {
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                println("Local player could not be authenticated, disabling game center")
+                println(error)
+            }
+            
+        }
+        
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    @IBAction func showLeaderboard(sender: AnyObject) {
+        
+        var gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.leaderboardIdentifier = "wordcon_LB_1"
+        self.presentViewController(gcVC, animated: true, completion: nil)
+    }
 }

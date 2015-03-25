@@ -8,8 +8,11 @@
 
 import Foundation
 
+
 class success: UIViewController {
     
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
     
     @IBOutlet var letterTextField: UITextField!
     
@@ -44,7 +47,6 @@ class success: UIViewController {
                         alert.addButtonWithTitle("Ok")
                         alert.show()
                     }
-                    
                     
                 }
             }
@@ -86,9 +88,8 @@ class success: UIViewController {
                 }
                 
             }
+            }
         }
-        }
-        
         
     }
     
@@ -125,13 +126,12 @@ class success: UIViewController {
             }
         }
 
-        
-        
     }
     
     func finishGame(){
         
         roundTextField.text = "1"
+        secondsTextField.text = "60"
         
         NSUserDefaults.standardUserDefaults().removeObjectForKey("1")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("2")
@@ -189,114 +189,166 @@ class success: UIViewController {
     
     func updateObject(){
         
-        var randomNumber = arc4random_uniform(10)
-        println("Random number is: \(randomNumber)")
         
-        
-        if Int(randomNumber) == 0 {
-            
-            
-            letterLabel.text = "A"
-            
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 1 {
-            
-            letterLabel.text = "B"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 2 {
-            
-            letterLabel.text = "C"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 3 {
-            
-            letterLabel.text = "D"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 4 {
-            
-            letterLabel.text = "E"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 5 {
-            
-            letterLabel.text = "F"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 6 {
-            
-            letterLabel.text = "G"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 7 {
-            
-            letterLabel.text = "H"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 8 {
-            
-            letterLabel.text = "I"
-            println(letterLabel.text)
-            
-        }
-        
-        if Int(randomNumber) == 9 {
-            
-            letterLabel.text = "J"
-            println(letterLabel.text)
-            
-        }
-    
-    //var myGame = PFObject(className: "game")
-    var query = PFQuery(className: "game")
+        var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())
         
-        query.getFirstObjectInBackgroundWithBlock {
-            (myGame: PFObject!, error: NSError!) -> Void in
-            if error != nil {
-                NSLog("%@", error)
-            } else {
-                
-                myGame["letter"] = self.letterLabel.text
-                myGame.saveInBackgroundWithBlock {
-                    (success: Bool, error: NSError!) -> Void in
-                    if (success) {
-                        // The object has been saved.
-                    } else if error != nil {
-                        let errorString = "\(error)"
-                        SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
-                        // Show the errorString somewhere and let the user try again.
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if !(error != nil) {
+                for object in objects {
+                    
+                    var myField1 = object["field1"]! as String
+                    var myField2 = object["field2"]! as String
+                    var myField3 = object["field3"]! as String
+                    var myField4 = object["field4"]! as String
+                    var myField5 = object["field5"]! as String
+                    var myField6 = object["field6"]! as String
+                    var myField7 = object["field7"]! as String
+                    var myField8 = object["field8"]! as String
+                    var myField9 = object["field9"]! as String
+                    var myField10 = object["field10"]! as String
+                    
+                    if myField1 == "empty" && myField2 == "empty" && myField3 == "empty" && myField4 == "empty" && myField5 == "empty" && myField6 == "empty" && myField7 == "empty" && myField8 == "empty" && myField9 == "empty" && myField10 == "empty" {
+                        
+                        //SCLAlertView().showError("Oops...", subTitle:"Please choose at least one category before starting game.", closeButtonTitle:"OK")
+                        let alert = UIAlertView()
+                        alert.title = "Oops!"
+                        alert.message = "Please choose at least one category before starting game."
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                    }
+                    else{
+                        
+                        self.gameViewButton.enabled = true
+                        
+                        var randomNumber = arc4random_uniform(10)
+                        println("Random number is: \(randomNumber)")
+                        
+                        
+                        if Int(randomNumber) == 0 {
+                            
+                            
+                            self.letterLabel.text = "A"
+                            
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 1 {
+                            
+                            self.letterLabel.text = "B"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 2 {
+                            
+                            self.letterLabel.text = "C"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 3 {
+                            
+                            self.letterLabel.text = "D"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 4 {
+                            
+                            self.letterLabel.text = "E"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 5 {
+                            
+                            self.letterLabel.text = "F"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 6 {
+                            
+                            self.letterLabel.text = "G"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 7 {
+                            
+                            self.letterLabel.text = "H"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 8 {
+                            
+                            self.letterLabel.text = "I"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 9 {
+                            
+                            self.letterLabel.text = "J"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        
+                        query.getFirstObjectInBackgroundWithBlock {
+                            (myGame: PFObject!, error: NSError!) -> Void in
+                            if error != nil {
+                                NSLog("%@", error)
+                            } else {
+                                
+                                myGame["letter"] = self.letterLabel.text
+                                myGame.saveInBackgroundWithBlock {
+                                    (success: Bool, error: NSError!) -> Void in
+                                    if (success) {
+                                        // The object has been saved.
+                                    } else if error != nil {
+                                        let errorString = "\(error)"
+                                        SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                                        // Show the errorString somewhere and let the user try again.
+                                    }
+                                }
+                                
+                            }
+                        }
+
+                        
+
                     }
                 }
-
             }
-        }
+            else if error != nil {
+                let errorString = "\(error)"
+                SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                // Show the errorString somewhere and let the user try again.
+            }
             
         }
+
+        
+        
+    //var myGame = PFObject(className: "game")
+    /*var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo: PFUser.currentUser())*/
+        
+        
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        gameViewButton.enabled = false
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
