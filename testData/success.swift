@@ -155,6 +155,7 @@ class success: UIViewController {
                 myGame.removeObjectForKey("Round")
                 myGame.removeObjectForKey("letter")
                 myGame.removeObjectForKey("seconds")
+                //myGame["seconds"] = "60"
                 myGame.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {

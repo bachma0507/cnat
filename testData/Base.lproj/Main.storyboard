@@ -142,6 +142,17 @@
                                     <navigationItem title="Home" id="svH-rs-VjZ"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4U-sP-eEG">
+                                <rect key="frame" x="132" y="121" width="57" height="30"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1BK-i4-Fnk" kind="popoverPresentation" popoverAnchorView="G4U-sP-eEG" id="f8x-uM-omE">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-to-nuw">
                                 <rect key="frame" x="112" y="56" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -485,6 +496,64 @@
             </objects>
             <point key="canvasLocation" x="803" y="-131"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="iWA-7o-gPP">
+            <objects>
+                <viewController id="1BK-i4-Fnk" customClass="Settings" customModule="testData" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xCm-k2-iUk"/>
+                        <viewControllerLayoutGuide type="bottom" id="pTd-o7-CFn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NjT-Px-EFz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qG5-e7-bto">
+                                <rect key="frame" x="112" y="56" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8T9-zb-iBZ">
+                                <rect key="frame" x="109" y="140" width="102" height="30"/>
+                                <state key="normal" title="Set Categories">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="6Q1-db-6Y8" kind="popoverPresentation" popoverAnchorView="8T9-zb-iBZ" id="0bI-Il-XI5">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpm-Gy-rdZ">
+                                <rect key="frame" x="140" y="193" width="40" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="uuz-YX-Hye" kind="presentation" id="Ipa-fc-TIy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWB-H2-XUI">
+                                <rect key="frame" x="113" y="94" width="94" height="30"/>
+                                <state key="normal" title="Save Counter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveCounter:" destination="1BK-i4-Fnk" eventType="touchUpInside" id="qPi-pS-8Gf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="secTextField" destination="qG5-e7-bto" id="7J2-eU-GOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0G-7D-NSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-179" y="722"/>
+        </scene>
         <!--Fieldnames-->
         <scene sceneID="kCW-dr-Fba">
             <objects>
@@ -580,15 +649,6 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-oW-xkC">
-                                                <rect key="frame" x="129" y="505" width="70" height="30"/>
-                                                <state key="normal" title="Main View">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="uuz-YX-Hye" kind="presentation" id="3S2-9V-7cg"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category 4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tp-VO-jNY">
                                                 <rect key="frame" x="20" y="173" width="85" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -607,8 +667,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN9-Uv-2JN">
-                                                <rect key="frame" x="146" y="467" width="37" height="30"/>
-                                                <state key="normal" title="Done">
+                                                <rect key="frame" x="146" y="467" width="34" height="30"/>
+                                                <state key="normal" title="Save">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -637,6 +697,15 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3d-oW-xkC">
+                                                <rect key="frame" x="106" y="505" width="116" height="30"/>
+                                                <state key="normal" title="Back To Settings">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="1BK-i4-Fnk" kind="show" id="yhv-PI-H7c"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.21286965533514879" green="0.74590564946421556" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -682,6 +751,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TIH-Ri-1KF"/>
+        <segue reference="Ipa-fc-TIy"/>
+        <segue reference="f8x-uM-omE"/>
+        <segue reference="EYf-7t-mpi"/>
     </inferredMetricsTieBreakers>
 </document>

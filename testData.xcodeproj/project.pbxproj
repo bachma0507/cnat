@@ -12,6 +12,7 @@
 		4C3C67001A83CBA5004A38C4 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */; };
 		4C3C67021A83DA29004A38C4 /* fieldnames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C67011A83DA29004A38C4 /* fieldnames.swift */; };
 		4C8C985F1A8564B600257700 /* AddMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C985E1A8564B600257700 /* AddMore.swift */; };
+		4CB69B531AC59E2900EC93B3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB69B521AC59E2900EC93B3 /* Settings.swift */; };
 		C44CF2891A203B730099E1BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44CF2881A203B730099E1BE /* AppDelegate.swift */; };
 		C44CF28C1A203B730099E1BE /* testData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C44CF28A1A203B730099E1BE /* testData.xcdatamodeld */; };
 		C44CF28E1A203B730099E1BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44CF28D1A203B730099E1BE /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		4C3C67011A83DA29004A38C4 /* fieldnames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fieldnames.swift; sourceTree = "<group>"; };
 		4C8C985E1A8564B600257700 /* AddMore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMore.swift; sourceTree = "<group>"; };
+		4CB69B521AC59E2900EC93B3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C44CF2831A203B730099E1BE /* testData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44CF2871A203B730099E1BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C44CF2881A203B730099E1BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				4C3C66FC1A82C2AB004A38C4 /* GameScreen.swift */,
 				4C3C67011A83DA29004A38C4 /* fieldnames.swift */,
 				4C8C985E1A8564B600257700 /* AddMore.swift */,
+				4CB69B521AC59E2900EC93B3 /* Settings.swift */,
 			);
 			path = testData;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				C44CF2B31A203F5B0099E1BE /* testDataCustom.m in Sources */,
 				4C3C66FD1A82C2AB004A38C4 /* GameScreen.swift in Sources */,
 				C44CF28E1A203B730099E1BE /* ViewController.swift in Sources */,
+				4CB69B531AC59E2900EC93B3 /* Settings.swift in Sources */,
 				4C3C67021A83DA29004A38C4 /* fieldnames.swift in Sources */,
 				C44CF2891A203B730099E1BE /* AppDelegate.swift in Sources */,
 				C44CF28C1A203B730099E1BE /* testData.xcdatamodeld in Sources */,
