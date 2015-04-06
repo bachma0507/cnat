@@ -59,6 +59,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //
         
         else{
+                
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("1")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("2")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("3")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("4")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("5")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("6")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("7")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("8")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("9")
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("10")
+                
         user.signUpInBackgroundWithBlock {
                     (succeeded: Bool!, error: NSError!) -> Void in
                     if error == nil {

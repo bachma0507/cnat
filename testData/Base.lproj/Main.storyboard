@@ -92,7 +92,6 @@
                                     <constraint firstAttribute="height" constant="21" id="UXz-v7-VSt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.31098992879999998" green="1" blue="0.61186604499999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QU-gH-aBH">
@@ -153,6 +152,12 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-Ss-0ZO">
+                                <rect key="frame" x="139" y="334" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-to-nuw">
                                 <rect key="frame" x="112" y="56" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -182,6 +187,7 @@
                     <connections>
                         <outlet property="gameViewButton" destination="IbX-aO-VH1" id="zJC-Ig-hUh"/>
                         <outlet property="letterLabel" destination="iMv-zE-fHu" id="4K4-OL-5Fq"/>
+                        <outlet property="roundLabel" destination="bdS-Ss-0ZO" id="jrV-lK-ZeD"/>
                         <outlet property="roundTextField" destination="TOl-Sj-mpA" id="MGg-iV-jaw"/>
                         <outlet property="secondsTextField" destination="Sfd-to-nuw" id="XQc-O0-7WA"/>
                     </connections>

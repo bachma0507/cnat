@@ -20,6 +20,8 @@ class success: UIViewController {
     
     @IBOutlet var roundTextField: UITextField!
     
+    @IBOutlet var roundLabel: UILabel!
+    
     @IBOutlet var secondsTextField: UITextField!
     
     @IBOutlet var gameViewButton: UIButton!
@@ -63,6 +65,7 @@ class success: UIViewController {
         else{
         
         var myRound = roundTextField.text
+            //var myRound = roundLabel.text
         
         NSUserDefaults.standardUserDefaults().setObject("0", forKey: "\(myRound)")
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -76,6 +79,8 @@ class success: UIViewController {
                 NSLog("%@", error)
             } else {
                 myGame["Round"] = self.roundTextField.text
+                myGame["Round"] = self.roundLabel.text
+                
                 myGame.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
@@ -131,6 +136,7 @@ class success: UIViewController {
     func finishGame(){
         
         roundTextField.text = "1"
+        roundLabel.text = "1"
         secondsTextField.text = "60"
         
         NSUserDefaults.standardUserDefaults().removeObjectForKey("1")
@@ -349,6 +355,11 @@ class success: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        secondsTextField.hidden = true
+        roundTextField.hidden = true
+        
+        letterLabel.hidden = true
+        
         gameViewButton.enabled = false
         
         var query = PFQuery(className: "game")
@@ -380,7 +391,7 @@ class success: UIViewController {
                     var newRound = myRoundInt! + 1
                     
                     self.roundTextField.text = "\(newRound)"
-                    
+                    self.roundLabel.text = "\(newRound)"
                     self.secondsTextField.text = "\(mySecondsInt!)"
                     
                     if newRound > 10 {
