@@ -22,6 +22,8 @@ class success: UIViewController {
     
     @IBOutlet var roundLabel: UILabel!
     
+    @IBOutlet var chooseCatButton: UIButton!
+    
     @IBOutlet var secondsTextField: UITextField!
     
     @IBOutlet var gameViewButton: UIButton!

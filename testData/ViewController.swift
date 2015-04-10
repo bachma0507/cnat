@@ -26,6 +26,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         else {
             
+            var usernameKey = Keychain.set("username", value: self.usernameTextField.text)
+            var passwordKey = Keychain.set("password", value: self.passwordTextField.text)
+            
             //var usernameKey = Keychain.set("username", value: self.usernameTextField.text)
             //var passwordKey = Keychain.set("password", value: self.passwordTextField.text)
             
