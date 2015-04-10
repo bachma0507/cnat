@@ -289,7 +289,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if !(error != nil) {
                 for object in objects {
-                    var mySeconds = object["seconds"]! as String
+                    var mySeconds = object["seconds"]! as! String
                     self.mySecondsInt = mySeconds.toInt()!
                     
                     
@@ -334,16 +334,16 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
                 if !(error != nil) {
                     for object in objects {
                         
-                        var myField1 = object["field1"]! as String
-                        var myField2 = object["field2"]! as String
-                        var myField3 = object["field3"]! as String
-                        var myField4 = object["field4"]! as String
-                        var myField5 = object["field5"]! as String
-                        var myField6 = object["field6"]! as String
-                        var myField7 = object["field7"]! as String
-                        var myField8 = object["field8"]! as String
-                        var myField9 = object["field9"]! as String
-                        var myField10 = object["field10"]! as String
+                        var myField1 = object["field1"]! as! String
+                        var myField2 = object["field2"]! as! String
+                        var myField3 = object["field3"]! as! String
+                        var myField4 = object["field4"]! as! String
+                        var myField5 = object["field5"]! as! String
+                        var myField6 = object["field6"]! as! String
+                        var myField7 = object["field7"]! as! String
+                        var myField8 = object["field8"]! as! String
+                        var myField9 = object["field9"]! as! String
+                        var myField10 = object["field10"]! as! String
                         
                         self.field1Label.text = myField1
                         self.field2Label.text = myField2
@@ -545,8 +545,8 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
             if !(error != nil) {
                 for object in objects {
                     
-                    var myLetter = object["letter"]! as String
-                    var myRound = object["Round"]! as String
+                    var myLetter = object["letter"]! as! String
+                    var myRound = object["Round"]! as! String
                     //myLetter = object["letter"] as String
                     println(myLetter)
                     
@@ -690,16 +690,16 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
                     //myLetter = object["letter"] as String
                     println(myLetter!)
                     
-                    var myField1 = object["field1"]! as String
-                    var myField2 = object["field2"]! as String
-                    var myField3 = object["field3"]! as String
-                    var myField4 = object["field4"]! as String
-                    var myField5 = object["field5"]! as String
-                    var myField6 = object["field6"]! as String
-                    var myField7 = object["field7"]! as String
-                    var myField8 = object["field8"]! as String
-                    var myField9 = object["field9"]! as String
-                    var myField10 = object["field10"]! as String
+                    var myField1 = object["field1"]! as! String
+                    var myField2 = object["field2"]! as! String
+                    var myField3 = object["field3"]! as! String
+                    var myField4 = object["field4"]! as! String
+                    var myField5 = object["field5"]! as! String
+                    var myField6 = object["field6"]! as! String
+                    var myField7 = object["field7"]! as! String
+                    var myField8 = object["field8"]! as! String
+                    var myField9 = object["field9"]! as! String
+                    var myField10 = object["field10"]! as! String
                     
                     self.letterLabel.text = myLetter!
                     self.roundLabel.text = myRound
@@ -872,7 +872,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true);
         return false;
     }

@@ -205,16 +205,16 @@ class success: UIViewController {
             if !(error != nil) {
                 for object in objects {
                     
-                    var myField1 = object["field1"]! as String
-                    var myField2 = object["field2"]! as String
-                    var myField3 = object["field3"]! as String
-                    var myField4 = object["field4"]! as String
-                    var myField5 = object["field5"]! as String
-                    var myField6 = object["field6"]! as String
-                    var myField7 = object["field7"]! as String
-                    var myField8 = object["field8"]! as String
-                    var myField9 = object["field9"]! as String
-                    var myField10 = object["field10"]! as String
+                    var myField1 = object["field1"]! as! String
+                    var myField2 = object["field2"]! as! String
+                    var myField3 = object["field3"]! as! String
+                    var myField4 = object["field4"]! as! String
+                    var myField5 = object["field5"]! as! String
+                    var myField6 = object["field6"]! as! String
+                    var myField7 = object["field7"]! as! String
+                    var myField8 = object["field8"]! as! String
+                    var myField9 = object["field9"]! as! String
+                    var myField10 = object["field10"]! as! String
                     
                     if myField1 == "empty" && myField2 == "empty" && myField3 == "empty" && myField4 == "empty" && myField5 == "empty" && myField6 == "empty" && myField7 == "empty" && myField8 == "empty" && myField9 == "empty" && myField10 == "empty" {
                         

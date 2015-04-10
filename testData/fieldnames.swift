@@ -97,16 +97,16 @@ class fieldnames : UIViewController, UITextFieldDelegate   {
 //                    var myLetter = object["letter"]! as String
 //                    println(myLetter)
                     
-                    var myField1 = object["field1"]! as String
-                    var myField2 = object["field2"]! as String
-                    var myField3 = object["field3"]! as String
-                    var myField4 = object["field4"]! as String
-                    var myField5 = object["field5"]! as String
-                    var myField6 = object["field6"]! as String
-                    var myField7 = object["field7"]! as String
-                    var myField8 = object["field8"]! as String
-                    var myField9 = object["field9"]! as String
-                    var myField10 = object["field10"]! as String
+                    var myField1 = object["field1"]! as! String
+                    var myField2 = object["field2"]! as! String
+                    var myField3 = object["field3"]! as! String
+                    var myField4 = object["field4"]! as! String
+                    var myField5 = object["field5"]! as! String
+                    var myField6 = object["field6"]! as! String
+                    var myField7 = object["field7"]! as! String
+                    var myField8 = object["field8"]! as! String
+                    var myField9 = object["field9"]! as! String
+                    var myField10 = object["field10"]! as! String
                     
                     //self.letterLabel.text = myLetter
                     self.cat1TextField.text = myField1
@@ -154,7 +154,7 @@ class fieldnames : UIViewController, UITextFieldDelegate   {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true);
         return false;
     }

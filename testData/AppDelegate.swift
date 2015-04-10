@@ -15,85 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool{
         
         Parse.setApplicationId("4DLgYbN8YWYX74UfjtzdllglBI9KihezGmlrAaWH", clientKey: "JrFZZhwTG4I9sdIBJQVeT6U99JI4vI84Mj97SYiV")
         
 
-//        var user = PFUser()
-//        user.username = "Misa"
-//        user.password = "pumpkin18"
-//        //user.email = "email@example.com"
-//        // other fields can be set just like with PFObject
-//        user["letter"] = "U"
-//        
-//        user.signUpInBackgroundWithBlock {
-//            (succeeded: Bool!, error: NSError!) -> Void in
-//            if error == nil {
-//                // Hooray! Let them use the app now.
-//            } else {
-//                //let errorString = error.userInfo["error"] as NSString
-//                // Show the errorString somewhere and let the user try again.
-//            }
-//        }
-        
-//        PFUser.logInWithUsernameInBackground("Misa", password:"pumpkin18") {
-//            (user: PFUser!, error: NSError!) -> Void in
-//            if user != nil {
-//                // Do stuff after successful login.
-//            } else {
-//                // The login failed. Check error to see why.
-//            }
-//        }
-        
-//        var myGame = PFObject(className:"game")
-//        myGame["letter"] = "F"
-//        myGame["player"] = PFUser.currentUser()
-//        
-//        myGame.saveInBackgroundWithBlock {
-//            (success: Bool, error: NSError!) -> Void in
-//            if (success) {
-//                // The object has been saved.
-//            } else {
-//                // There was a problem, check error.description
-//            }
-//        }
-        
-//        var myGame = PFObject(className:"game")
-//        
-//        myGame["player"] = PFUser.currentUser()
-        
-//        var query = PFQuery(className: "game")
-//        query.whereKey("player", equalTo:PFUser.currentUser())
-//        
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            if !(error != nil) {
-//                for object in objects {
-//                    
-//                    var myLetter = object["letter"]! as String
-//                    //myLetter = object["letter"] as String
-//                    println(myLetter)
-//                }
-////                else {
-////                    println("%@", error)
-////                }
-//            }
-//        }
-    
-    
-        //        var object = PFObject(className: "User")
-//        object["username"] = "Misa"
-//        object["password"] = "pumpkin18"
-//        object["letter"] = "P"
-//        object.saveInBackgroundWithBlock{
-//            (success: Bool, error: NSError!) -> Void in
-//            if (success) {
-//                // The object has been saved.
-//            } else {
-//                // There was a problem, check error.description
-//            }
-//        }
+
         
         // Override point for customization after application launch.
         return true
@@ -207,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Returns the URL to the application's Documents directory.
     var applicationDocumentsDirectory: NSURL {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.endIndex-1] as NSURL
+        return urls[urls.endIndex-1] as! NSURL
     }
 
 }
