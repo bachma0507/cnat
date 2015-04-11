@@ -73,6 +73,10 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
     
     @IBOutlet var roundLabel: UILabel!
     
+    @IBAction func playerRoleButtonPressed(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("role", sender: self)
+    }
     //MARK: Calculate Round and Total Scores
     @IBAction func calculateScore(sender: AnyObject) {
         
@@ -248,7 +252,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
         
         var leaderboardID = "wordcon_LB_1"
         var sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(totalRoundScore)
+        sScore.value = Int64(grandTotal)
         
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
         
@@ -642,12 +646,19 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
         
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        if let viewContr2 = self.presentingViewController as? ChoiceScreen {
+            self.mainViewButton.hidden = true
+        } else if let viewContr3 = self.presentingViewController as? success {
+            self.newButton.hidden = true
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         self.authenticateLocalPlayer()
         

@@ -24,9 +24,13 @@ class success: UIViewController {
     
     @IBOutlet var chooseCatButton: UIButton!
     
+    @IBOutlet var pickLetterButton: UIButton!
+    
     @IBOutlet var secondsTextField: UITextField!
     
     @IBOutlet var gameViewButton: UIButton!
+    
+    @IBOutlet var endGameButton: UIButton!
     
     @IBAction func gameViewButtonClicked(sender: AnyObject) {
         
@@ -139,7 +143,9 @@ class success: UIViewController {
         
         roundTextField.text = "1"
         roundLabel.text = "1"
-        secondsTextField.text = "60"
+        //secondsTextField.text = "60"
+        
+        pickLetterButton.enabled = true
         
         NSUserDefaults.standardUserDefaults().removeObjectForKey("1")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("2")
@@ -162,7 +168,7 @@ class success: UIViewController {
             } else {
                 myGame.removeObjectForKey("Round")
                 myGame.removeObjectForKey("letter")
-                myGame.removeObjectForKey("seconds")
+                //myGame.removeObjectForKey("seconds")
                 //myGame["seconds"] = "60"
                 myGame.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
@@ -193,6 +199,8 @@ class success: UIViewController {
         saveRound()
         
         saveSeconds()
+        
+        pickLetterButton.enabled = false
         
     }
     
@@ -231,7 +239,7 @@ class success: UIViewController {
                         
                         self.gameViewButton.enabled = true
                         
-                        var randomNumber = arc4random_uniform(10)
+                        var randomNumber = arc4random_uniform(27)
                         println("Random number is: \(randomNumber)")
                         
                         
@@ -306,6 +314,123 @@ class success: UIViewController {
                             println(self.letterLabel.text)
                             
                         }
+                        if Int(randomNumber) == 10 {
+                            
+                            
+                            self.letterLabel.text = "K"
+                            
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 11 {
+                            
+                            self.letterLabel.text = "L"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 12 {
+                            
+                            self.letterLabel.text = "M"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 13 {
+                            
+                            self.letterLabel.text = "N"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 14 {
+                            
+                            self.letterLabel.text = "O"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 15 {
+                            
+                            self.letterLabel.text = "P"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 16 {
+                            
+                            self.letterLabel.text = "Q"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 17 {
+                            
+                            self.letterLabel.text = "R"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 18 {
+                            
+                            self.letterLabel.text = "S"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 19 {
+                            
+                            self.letterLabel.text = "T"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        if Int(randomNumber) == 20 {
+                            
+                            
+                            self.letterLabel.text = "U"
+                            
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 21 {
+                            
+                            self.letterLabel.text = "V"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 22 {
+                            
+                            self.letterLabel.text = "W"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 23 {
+                            
+                            self.letterLabel.text = "X"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 24 {
+                            
+                            self.letterLabel.text = "Y"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        if Int(randomNumber) == 25 {
+                            
+                            self.letterLabel.text = "Z"
+                            println(self.letterLabel.text)
+                            
+                        }
+                        
+                        
+
                         
                         
                         query.getFirstObjectInBackgroundWithBlock {
@@ -357,12 +482,18 @@ class success: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        endGameButton.hidden = true
+        
         secondsTextField.hidden = true
         roundTextField.hidden = true
         
         letterLabel.hidden = true
         
         gameViewButton.enabled = false
+        
+        chooseCatButton.hidden = true
+        
+        pickLetterButton.enabled = true
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())

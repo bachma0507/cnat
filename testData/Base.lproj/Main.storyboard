@@ -53,12 +53,12 @@
                     <connections>
                         <outlet property="passwordTextField" destination="O9U-WH-1Yt" id="bJw-73-zon"/>
                         <outlet property="usernameTextField" destination="AIN-sQ-62d" id="Cuf-EQ-dve"/>
-                        <segue destination="uuz-YX-Hye" kind="presentation" identifier="success" id="bv6-HS-rhH"/>
+                        <segue destination="xqi-gl-Dgn" kind="presentation" identifier="success" id="Ia3-6A-mUd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="-20"/>
+            <point key="canvasLocation" x="-986" y="-61"/>
         </scene>
         <!--Success-->
         <scene sceneID="Pt8-Vl-boq">
@@ -186,8 +186,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="chooseCatButton" destination="8QU-gH-aBH" id="gjE-Pw-tte"/>
+                        <outlet property="endGameButton" destination="HUn-wv-7zR" id="I4f-F9-qRa"/>
                         <outlet property="gameViewButton" destination="IbX-aO-VH1" id="zJC-Ig-hUh"/>
                         <outlet property="letterLabel" destination="iMv-zE-fHu" id="4K4-OL-5Fq"/>
+                        <outlet property="pickLetterButton" destination="esL-1e-oXG" id="HkM-V0-TZm"/>
                         <outlet property="roundLabel" destination="bdS-Ss-0ZO" id="jrV-lK-ZeD"/>
                         <outlet property="roundTextField" destination="TOl-Sj-mpA" id="MGg-iV-jaw"/>
                         <outlet property="secondsTextField" destination="Sfd-to-nuw" id="XQc-O0-7WA"/>
@@ -195,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="-61"/>
+            <point key="canvasLocation" x="166" y="475"/>
         </scene>
         <!--Game Screen-->
         <scene sceneID="gBI-w6-6IP">
@@ -388,7 +390,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HnC-3t-zV4">
-                                                <rect key="frame" x="136" y="454" width="67" height="30"/>
+                                                <rect key="frame" x="136" y="471" width="67" height="30"/>
                                                 <state key="normal" title="New">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -403,7 +405,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42i-3W-xSn">
-                                                <rect key="frame" x="131" y="484" width="76" height="30"/>
+                                                <rect key="frame" x="131" y="454" width="76" height="30"/>
                                                 <state key="normal" title="Main View">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -412,7 +414,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-qW-5W9">
-                                                <rect key="frame" x="119" y="509" width="109" height="22"/>
+                                                <rect key="frame" x="115" y="493" width="109" height="22"/>
                                                 <state key="normal" title="Calculate Score">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -427,12 +429,21 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaF-iy-EH2">
-                                                <rect key="frame" x="125" y="525" width="89" height="30"/>
+                                                <rect key="frame" x="125" y="509" width="89" height="30"/>
                                                 <state key="normal" title="LeaderBoard">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="showLeaderboard:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="XGA-Qu-ZMl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yc3-xJ-2Xe">
+                                                <rect key="frame" x="130" y="530" width="78" height="30"/>
+                                                <state key="normal" title="Player Role">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="playerRoleButtonPressed:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="OLA-Tg-3F8"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -497,11 +508,66 @@
                         <outlet property="score8Textfield" destination="IgT-E6-xqu" id="1T8-mW-Jdc"/>
                         <outlet property="score9Textfield" destination="jVu-gJ-Dbo" id="nZt-XF-aEe"/>
                         <outlet property="timerLabel" destination="PxM-0C-FIc" id="zDr-M1-Xu4"/>
+                        <segue destination="xqi-gl-Dgn" kind="presentation" identifier="role" id="CFl-7a-q0R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4t0-P9-OkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="803" y="-131"/>
+            <point key="canvasLocation" x="-43" y="-129"/>
+        </scene>
+        <!--Choice Screen-->
+        <scene sceneID="FjA-Nb-Oqj">
+            <objects>
+                <viewController id="xqi-gl-Dgn" customClass="ChoiceScreen" customModule="testData" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UWY-VB-vmV"/>
+                        <viewControllerLayoutGuide type="bottom" id="BrA-F0-EYb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1i2-bC-cxk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX0-mN-Mez">
+                                <rect key="frame" x="120" y="87" width="81" height="30"/>
+                                <state key="normal" title="Lead Player">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leadPlayerButtonPressed:" destination="xqi-gl-Dgn" eventType="touchUpInside" id="D3d-aq-PIO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH7-pT-Roq">
+                                <rect key="frame" x="110" y="168" width="100" height="30"/>
+                                <state key="normal" title="Regular Player">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="regularPlayerButtonPressed:" destination="xqi-gl-Dgn" eventType="touchUpInside" id="aWH-Iz-PoK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="km5-Yh-9Kn">
+                                <rect key="frame" x="124" y="245" width="73" height="30"/>
+                                <state key="normal" title="End Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="endGame:" destination="xqi-gl-Dgn" eventType="touchUpInside" id="Oab-YV-2xq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="leadPlayerButton" destination="VX0-mN-Mez" id="tKf-G2-PwJ"/>
+                        <outlet property="regualrPlayerButton" destination="rH7-pT-Roq" id="SiH-Z8-M8c"/>
+                        <segue destination="uuz-YX-Hye" kind="presentation" identifier="leadplayer" id="WXU-Z0-yct"/>
+                        <segue destination="4LJ-4q-ocu" kind="presentation" identifier="player" id="are-xM-hqS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGd-RY-UYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="289"/>
         </scene>
         <!--Settings-->
         <scene sceneID="iWA-7o-gPP">
@@ -559,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0G-7D-NSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-179" y="722"/>
+            <point key="canvasLocation" x="35" y="1024"/>
         </scene>
         <!--Fieldnames-->
         <scene sceneID="kCW-dr-Fba">
@@ -754,11 +820,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIC-0S-ly7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384" y="413"/>
+            <point key="canvasLocation" x="638" y="765"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ipa-fc-TIy"/>
+        <segue reference="CFl-7a-q0R"/>
+        <segue reference="8ED-9M-dK7"/>
+        <segue reference="TIH-Ri-1KF"/>
         <segue reference="f8x-uM-omE"/>
         <segue reference="EYf-7t-mpi"/>
     </inferredMetricsTieBreakers>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2F93E81AD93B8A00446BFC /* choicescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F93E71AD93B8A00446BFC /* choicescreen.swift */; };
 		4C3C66FB1A81A7C0004A38C4 /* success.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FA1A81A7C0004A38C4 /* success.swift */; };
 		4C3C66FD1A82C2AB004A38C4 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FC1A82C2AB004A38C4 /* GameScreen.swift */; };
 		4C3C67001A83CBA5004A38C4 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C2F93E71AD93B8A00446BFC /* choicescreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = choicescreen.swift; sourceTree = "<group>"; };
 		4C3C66FA1A81A7C0004A38C4 /* success.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = success.swift; sourceTree = "<group>"; };
 		4C3C66FC1A82C2AB004A38C4 /* GameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				4C8C985E1A8564B600257700 /* AddMore.swift */,
 				4CB69B521AC59E2900EC93B3 /* Settings.swift */,
 				4CB69B881AD712B700EC93B3 /* keychain.swift */,
+				4C2F93E71AD93B8A00446BFC /* choicescreen.swift */,
 			);
 			path = testData;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				C44CF2B31A203F5B0099E1BE /* testDataCustom.m in Sources */,
 				4C3C66FD1A82C2AB004A38C4 /* GameScreen.swift in Sources */,
 				C44CF28E1A203B730099E1BE /* ViewController.swift in Sources */,
+				4C2F93E81AD93B8A00446BFC /* choicescreen.swift in Sources */,
 				4CB69B531AC59E2900EC93B3 /* Settings.swift in Sources */,
 				4C3C67021A83DA29004A38C4 /* fieldnames.swift in Sources */,
 				C44CF2891A203B730099E1BE /* AppDelegate.swift in Sources */,
