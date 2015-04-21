@@ -51,7 +51,11 @@ class fieldnames : UIViewController, UITextFieldDelegate   {
                 myGame.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError!) -> Void in
                     if (success) {
-                        // The object has been saved.
+                        let alert = UIAlertView()
+                        alert.title = "Categories Saved!"
+                        alert.message = "Your categories have been saved!"
+                        alert.addButtonWithTitle("OK")
+                        alert.show()
                     } else if error != nil {
                         let errorString = "\(error)"
                         SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")

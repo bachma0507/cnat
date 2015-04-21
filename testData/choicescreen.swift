@@ -108,7 +108,7 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
             
             
         }
-
+        
         
         
     }
@@ -166,7 +166,7 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
                 
             }
         }
-
+        
         
         
         
@@ -186,7 +186,7 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("10")
         
         self.authenticateLocalPlayer()
-
+        
         
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())
@@ -253,11 +253,11 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
         }
         
     }
-
+    
     func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
-
     
-
+    
+    
 }

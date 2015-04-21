@@ -443,7 +443,11 @@ class success: UIViewController {
                                 myGame.saveInBackgroundWithBlock {
                                     (success: Bool, error: NSError!) -> Void in
                                     if (success) {
-                                        // The object has been saved.
+                                        let alert = UIAlertView()
+                                        alert.title = "Success"
+                                        alert.message = "A new random letter has been generated! Please tap on My Game View to continue."
+                                        alert.addButtonWithTitle("OK")
+                                        alert.show()
                                     } else if error != nil {
                                         let errorString = "\(error)"
                                         SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
