@@ -40,6 +40,7 @@ class success: UIViewController {
     
     @IBAction func gameViewButtonClicked(sender: AnyObject) {
         
+        
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo:PFUser.currentUser())
         
@@ -68,6 +69,7 @@ class success: UIViewController {
     }
     
     func saveRound() {
+        
         
         if roundTextField.text == ""{
             
@@ -206,7 +208,59 @@ class success: UIViewController {
         
         saveSeconds()
         
+        checkForDupeLetter()
+        
         pickLetterButton.enabled = false
+        
+        
+        
+    }
+    
+    func checkForDupeLetter(){
+        
+        var letter1: String! = (NSUserDefaults.standardUserDefaults().objectForKey("1")) as! String
+        println("letter1 is \(letter1)")
+        var letter2: AnyObject? = (NSUserDefaults.standardUserDefaults().objectForKey("2"))
+        if letter2 != nil{
+        println("letter2 is \(letter2!)")
+        }
+        var letter3: AnyObject? = (NSUserDefaults.standardUserDefaults().objectForKey("3"))
+        if letter3 != nil{
+            println("letter3 is \(letter3!)")
+        }
+//        var letter3 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as! String
+//        println("letter3 is \(letter3)")
+//        var letter4 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("4")) as! String
+//        println("letter4 is \(letter4)")
+//        var letter5 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("5")) as! String
+//        println("letter5 is \(letter5)")
+//        var letter6 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("6")) as! String
+//        println("letter6 is \(letter6)")
+//        var letter7 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("7")) as! String
+//        println("letter7 is \(letter7)")
+//        var letter8 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("8")) as! String
+//        println("letter8 is \(letter8)")
+//        var letter9 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("9")) as! String
+//        println("letter9 is \(letter9)")
+//        var letter10 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("10")) as! String
+//        println("letter10 is \(letter10)")
+        
+        println("Round is \(roundLabel.text!)")
+        println("Letter is \(self.letterLabel.text!)")
+        
+//        if roundLabel.text == "2"{
+//            
+//            if letterLabel.text == letter1 {
+//                
+//                SCLAlertView().showError("Oops...", subTitle:"A previously used letter was generated. Please pick another letter.", closeButtonTitle:"OK")
+//                
+//            }
+//            
+//            
+//        }
+
+        
+        
         
     }
     
@@ -300,6 +354,9 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
+                                
                             }
                             
                             if Int(randNum) == 1 {
@@ -312,6 +369,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -327,6 +386,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -341,6 +402,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                                             }
                             
                             if Int(randNum) == 4 {
@@ -355,6 +418,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 5 {
@@ -367,6 +432,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -382,6 +449,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -396,6 +465,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -409,6 +480,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -425,6 +498,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             if Int(randNum) == 10 {
                                 
@@ -438,6 +513,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -453,6 +530,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -466,6 +545,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -482,6 +563,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 14 {
@@ -496,6 +579,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 15 {
@@ -509,6 +594,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 16 {
@@ -521,6 +608,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -536,6 +625,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -550,6 +641,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -563,6 +656,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -579,6 +674,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 21 {
@@ -592,6 +689,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                             }
                             
@@ -607,6 +706,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 23 {
@@ -621,6 +722,8 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                             }
                             
                             if Int(randNum) == 24 {
@@ -633,6 +736,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                                 
                             }
@@ -648,6 +753,8 @@ class success: UIViewController {
                                 
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
                                 
                             }
 
@@ -705,10 +812,9 @@ class success: UIViewController {
     /*var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())*/
         
-        
     }
     
-        
+    
     
     
     override func viewDidLoad() {
