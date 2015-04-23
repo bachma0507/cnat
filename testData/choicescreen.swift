@@ -19,6 +19,17 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
     
     @IBOutlet var regualrPlayerButton: UIButton!
     
+    @IBOutlet var gameIdLabel: UILabel!
+    
+    @IBAction func devSettingsButtonPressed(sender: AnyObject) {
+        
+//        let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+//        UIApplication.sharedApplication().openURL(url)
+        
+        let url = NSURL(string:"gamecenter:/me/account")!
+        UIApplication.sharedApplication().openURL(url)
+        
+    }
     @IBAction func leadPlayerButtonPressed(sender: AnyObject) {
         
         var query = PFQuery(className: "game")
@@ -196,6 +207,10 @@ class ChoiceScreen : UIViewController, GKGameCenterControllerDelegate {
             
             if !(error != nil) {
                 for object in objects {
+                    
+                    var myGameId: String? = object["gameID"] as? String
+                    
+                    self.gameIdLabel.text = myGameId
                     
                     var myLeadPlayer: String? = object["leadplayer"] as? String
                     

@@ -89,6 +89,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         var myGame = PFObject(className:"game")
                         myGame["player"] = PFUser.currentUser()
                         
+                       myGame["gameID"] = self.usernameTextField.text
                         myGame["letter"] = "NO LETTER"
                         myGame["Round"] = "0"
                         myGame["seconds"] = "60"

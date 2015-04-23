@@ -11,6 +11,10 @@ import Foundation
 
 class success: UIViewController {
     
+    
+    var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+
+    
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
     
@@ -31,6 +35,8 @@ class success: UIViewController {
     @IBOutlet var gameViewButton: UIButton!
     
     @IBOutlet var endGameButton: UIButton!
+    
+    @IBOutlet var gameIdLabel: UILabel!
     
     @IBAction func gameViewButtonClicked(sender: AnyObject) {
         
@@ -204,6 +210,22 @@ class success: UIViewController {
         
     }
     
+    func randomNumber() -> Int {
+        //var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+        var arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
+        var randNum = nums[arrayKey]
+        while nums.count > 0 {
+            arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
+            randNum = nums[arrayKey]
+            
+            // make sure the number isnt repeated
+            nums.removeAtIndex(arrayKey)
+        }
+        return randNum
+    }
+    
+    
+    
     func updateObject(){
         
         
@@ -239,195 +261,400 @@ class success: UIViewController {
                         
                         self.gameViewButton.enabled = true
                         
-                        var randomNumber = arc4random_uniform(27)
-                        println("Random number is: \(randomNumber)")
+                        
+                        //println("Random number is: \(randNum)")
+                        
+                        //var arrayKey = Int(arc4random_uniform(UInt32(self.nums.count)))
                         
                         
-                        if Int(randomNumber) == 0 {
-                            
-                            
-                            self.letterLabel.text = "A"
-                            
-                            println(self.letterLabel.text)
-                            
-                        }
+                            //let randNum = self.nums[arrayKey]
+                            //println("Random number is: \(arrayKey)")
                         
-                        if Int(randomNumber) == 1 {
+//                        var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+//                        
+//                        while nums.count > 0 {
+//                            
+//                            // random key from array
+//                            let arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
+//                            
+//                            // your random number
+//                            let randNum = nums[arrayKey] 
+//                            
+//                            // make sure the number isnt repeated
+//                            nums.removeAtIndex(arrayKey)
+//                        }
+
+                        var randNum = self.randomNumber()
+                        println("Random number is: \(randNum)")
                             
-                            self.letterLabel.text = "B"
-                            println(self.letterLabel.text)
+                            if Int(randNum) == 0 {
+                                
+                                
+                                self.letterLabel.text = "A"
+                                
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
                             
-                        }
+                            if Int(randNum) == 1 {
+                                
+                                self.letterLabel.text = "B"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 2 {
+                                
+                                self.letterLabel.text = "C"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 3 {
+                                
+                                self.letterLabel.text = "D"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                                            }
+                            
+                            if Int(randNum) == 4 {
+                                
+                                self.letterLabel.text = "E"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 5 {
+                                
+                                self.letterLabel.text = "F"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 6 {
+                                
+                                self.letterLabel.text = "G"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 7 {
+                                
+                                self.letterLabel.text = "H"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 8 {
+                                
+                                self.letterLabel.text = "I"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 9 {
+                                
+                                self.letterLabel.text = "J"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            if Int(randNum) == 10 {
+                                
+                                
+                                self.letterLabel.text = "K"
+                                
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 11 {
+                                
+                                self.letterLabel.text = "L"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 12 {
+                                
+                                self.letterLabel.text = "M"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 13 {
+                                
+                                self.letterLabel.text = "N"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 14 {
+                                
+                                self.letterLabel.text = "O"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 15 {
+                                
+                                self.letterLabel.text = "P"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 16 {
+                                
+                                self.letterLabel.text = "Q"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 17 {
+                                
+                                self.letterLabel.text = "R"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 18 {
+                                
+                                self.letterLabel.text = "S"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 19 {
+                                
+                                self.letterLabel.text = "T"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            if Int(randNum) == 20 {
+                                
+                                
+                                self.letterLabel.text = "U"
+                                
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 21 {
+                                
+                                self.letterLabel.text = "V"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 22 {
+                                
+                                self.letterLabel.text = "W"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 23 {
+                                
+                                self.letterLabel.text = "X"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+                            
+                            if Int(randNum) == 24 {
+                                
+                                self.letterLabel.text = "Y"
+                                println(self.letterLabel.text!)
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                                
+                            }
+                            
+                            if Int(randNum) == 25 {
+                                
+                                self.letterLabel.text = "Z"
+                                println(self.letterLabel.text!)
+                                
+                                
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().synchronize()
+                                
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
+                                
+                            }
+
+                                                                                //}
+
                         
-                        if Int(randomNumber) == 2 {
-                            
-                            self.letterLabel.text = "C"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 3 {
-                            
-                            self.letterLabel.text = "D"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 4 {
-                            
-                            self.letterLabel.text = "E"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 5 {
-                            
-                            self.letterLabel.text = "F"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 6 {
-                            
-                            self.letterLabel.text = "G"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 7 {
-                            
-                            self.letterLabel.text = "H"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 8 {
-                            
-                            self.letterLabel.text = "I"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 9 {
-                            
-                            self.letterLabel.text = "J"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        if Int(randomNumber) == 10 {
-                            
-                            
-                            self.letterLabel.text = "K"
-                            
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 11 {
-                            
-                            self.letterLabel.text = "L"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 12 {
-                            
-                            self.letterLabel.text = "M"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 13 {
-                            
-                            self.letterLabel.text = "N"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 14 {
-                            
-                            self.letterLabel.text = "O"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 15 {
-                            
-                            self.letterLabel.text = "P"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 16 {
-                            
-                            self.letterLabel.text = "Q"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 17 {
-                            
-                            self.letterLabel.text = "R"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 18 {
-                            
-                            self.letterLabel.text = "S"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 19 {
-                            
-                            self.letterLabel.text = "T"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        if Int(randomNumber) == 20 {
-                            
-                            
-                            self.letterLabel.text = "U"
-                            
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 21 {
-                            
-                            self.letterLabel.text = "V"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 22 {
-                            
-                            self.letterLabel.text = "W"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 23 {
-                            
-                            self.letterLabel.text = "X"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 24 {
-                            
-                            self.letterLabel.text = "Y"
-                            println(self.letterLabel.text)
-                            
-                        }
-                        
-                        if Int(randomNumber) == 25 {
-                            
-                            self.letterLabel.text = "Z"
-                            println(self.letterLabel.text)
-                            
-                        }
+
                         
                         
 
@@ -462,6 +689,7 @@ class success: UIViewController {
 
                     }
                 }
+            
             }
             else if error != nil {
                 let errorString = "\(error)"
@@ -480,6 +708,7 @@ class success: UIViewController {
         
     }
     
+        
     
     
     override func viewDidLoad() {
@@ -507,11 +736,16 @@ class success: UIViewController {
             if !(error != nil) {
                 for object in objects {
                     
+                    var myGameId = object["gameID"] as? String
+                    
+                    self.gameIdLabel.text = myGameId
+                    
                     var mySeconds = object["seconds"]! as? String
                     
                     var mySecondsInt = mySeconds?.toInt()
                     
                     if mySecondsInt == nil{
+                        
                         
                         mySecondsInt = 60
                     }
