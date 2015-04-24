@@ -103,7 +103,6 @@
                                 </state>
                                 <connections>
                                     <action selector="gameViewButtonClicked:" destination="uuz-YX-Hye" eventType="touchUpInside" id="TvI-P1-n3I"/>
-                                    <segue destination="4LJ-4q-ocu" kind="presentation" identifier="gameViewSegue" id="8ED-9M-dK7"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TOl-Sj-mpA">
@@ -180,6 +179,7 @@
                         <outlet property="roundLabel" destination="bdS-Ss-0ZO" id="jrV-lK-ZeD"/>
                         <outlet property="roundTextField" destination="TOl-Sj-mpA" id="MGg-iV-jaw"/>
                         <outlet property="secondsTextField" destination="Sfd-to-nuw" id="XQc-O0-7WA"/>
+                        <segue destination="4LJ-4q-ocu" kind="presentation" identifier="gameViewSegue" id="5n8-89-YYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -844,7 +844,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="CFl-7a-q0R"/>
-        <segue reference="8ED-9M-dK7"/>
+        <segue reference="5n8-89-YYe"/>
         <segue reference="TIH-Ri-1KF"/>
         <segue reference="f8x-uM-omE"/>
         <segue reference="EYf-7t-mpi"/>

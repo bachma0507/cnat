@@ -12,8 +12,8 @@ import Foundation
 class success: UIViewController {
     
     
-    var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-
+    //var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+        var nums = [0,1,2,3]
     
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
@@ -40,32 +40,33 @@ class success: UIViewController {
     
     @IBAction func gameViewButtonClicked(sender: AnyObject) {
         
+        checkForDupeLetter()
         
-        var query = PFQuery(className: "game")
-        query.whereKey("player", equalTo:PFUser.currentUser())
-        
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if !(error != nil) {
-                for object in objects {
-                    
-                    var myLetter = object["letter"]! as? String
-                    
-                    println("the value of letter when game view tapped is \(myLetter!)")
-                    
-                    if myLetter! == "NO LETTER" || myLetter! == "" {
-                        
-                        //SCLAlertView().showError("Oops...", subTitle:"Please enter tap on Pick Letter before starting round.", closeButtonTitle:"OK")
-                        let alert = UIAlertView()
-                        alert.title = "Oops!"
-                        alert.message = "Please tap on Pick Letter before starting round."
-                        alert.addButtonWithTitle("Ok")
-                        alert.show()
-                    }
-                    
-                }
-            }
-        }
+//        var query = PFQuery(className: "game")
+//        query.whereKey("player", equalTo:PFUser.currentUser())
+//        
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]!, error: NSError!) -> Void in
+//            if !(error != nil) {
+//                for object in objects {
+//                    
+//                    var myLetter = object["letter"]! as? String
+//                    
+//                    println("the value of letter when game view tapped is \(myLetter!)")
+//                    
+//                    if myLetter! == "NO LETTER" || myLetter! == "" {
+//                        
+//                        //SCLAlertView().showError("Oops...", subTitle:"Please enter tap on Pick Letter before starting round.", closeButtonTitle:"OK")
+//                        let alert = UIAlertView()
+//                        alert.title = "Oops!"
+//                        alert.message = "Please tap on Pick Letter before starting round."
+//                        alert.addButtonWithTitle("Ok")
+//                        alert.show()
+//                    }
+//                    
+//                }
+//            }
+//        }
     }
     
     func saveRound() {
@@ -208,10 +209,9 @@ class success: UIViewController {
         
         saveSeconds()
         
-        checkForDupeLetter()
+        //checkForDupeLetter()
         
         pickLetterButton.enabled = false
-        
         
         
     }
@@ -220,61 +220,545 @@ class success: UIViewController {
         
         var letter1: String! = (NSUserDefaults.standardUserDefaults().objectForKey("1")) as! String
         println("letter1 is \(letter1)")
-        var letter2: AnyObject? = (NSUserDefaults.standardUserDefaults().objectForKey("2"))
+        var letter2: String? = (NSUserDefaults.standardUserDefaults().objectForKey("2")) as? String
         if letter2 != nil{
-        println("letter2 is \(letter2!)")
+        println("letter2 is \(letter2)")
         }
-        var letter3: AnyObject? = (NSUserDefaults.standardUserDefaults().objectForKey("3"))
+        var letter3: String? = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as? String
         if letter3 != nil{
-            println("letter3 is \(letter3!)")
+            println("letter3 is \(letter3)")
         }
-//        var letter3 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as! String
-//        println("letter3 is \(letter3)")
-//        var letter4 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("4")) as! String
-//        println("letter4 is \(letter4)")
-//        var letter5 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("5")) as! String
-//        println("letter5 is \(letter5)")
-//        var letter6 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("6")) as! String
-//        println("letter6 is \(letter6)")
-//        var letter7 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("7")) as! String
-//        println("letter7 is \(letter7)")
-//        var letter8 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("8")) as! String
-//        println("letter8 is \(letter8)")
-//        var letter9 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("9")) as! String
-//        println("letter9 is \(letter9)")
-//        var letter10 : String! = (NSUserDefaults.standardUserDefaults().objectForKey("10")) as! String
-//        println("letter10 is \(letter10)")
+        var letter4: String? = (NSUserDefaults.standardUserDefaults().objectForKey("4")) as? String
+        if letter4 != nil{
+            println("letter4 is \(letter4)")
+        }
+        var letter5: String? = (NSUserDefaults.standardUserDefaults().objectForKey("5")) as? String
+        if letter5 != nil{
+            println("letter5 is \(letter5)")
+        }
+        var letter6: String? = (NSUserDefaults.standardUserDefaults().objectForKey("6")) as? String
+        if letter6 != nil{
+            println("letter6 is \(letter6)")
+        }
+        var letter7: String? = (NSUserDefaults.standardUserDefaults().objectForKey("7")) as? String
+        if letter7 != nil{
+            println("letter7 is \(letter7)")
+        }
+        var letter8: String? = (NSUserDefaults.standardUserDefaults().objectForKey("8")) as? String
+        if letter8 != nil{
+            println("letter8 is \(letter8)")
+        }
+        var letter9: String? = (NSUserDefaults.standardUserDefaults().objectForKey("9")) as? String
+        if letter9 != nil{
+            println("letter9 is \(letter9)")
+        }
+        var letter10: String? = (NSUserDefaults.standardUserDefaults().objectForKey("10")) as? String
+        if letter10 != nil{
+            println("letter10 is \(letter10)")
+        }
+
         
         println("Round is \(roundLabel.text!)")
         println("Letter is \(self.letterLabel.text!)")
         
-//        if roundLabel.text == "2"{
-//            
-//            if letterLabel.text == letter1 {
-//                
-//                SCLAlertView().showError("Oops...", subTitle:"A previously used letter was generated. Please pick another letter.", closeButtonTitle:"OK")
-//                
-//            }
-//            
-//            
-//        }
+        var roundNumber = roundLabel.text!
+        
+        switch(roundNumber){
+            
+        case "1":
+            self.performSegueWithIdentifier("gameViewSegue", sender: self)
+            
+        case "2":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+                case "\(letter1)":
+                    let alert = UIAlertView()
+                    alert.title = "Oops!"
+                    alert.message = "A previously used letter was generated. Please pick another letter."
+                    alert.addButtonWithTitle("Ok")
+                    alert.show()
+                    self.pickLetterButton.enabled = true
+                    self.gameViewButton.enabled = false
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+            }
+            
+        case "3":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+                    case "\(letter1)":
+                        let alert = UIAlertView()
+                        alert.title = "Oops!"
+                        alert.message = "A previously used letter was generated. Please pick another letter."
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                        self.pickLetterButton.enabled = true
+                        self.gameViewButton.enabled = false
+                
+                    case "\(letter2!)":
+                        let alert = UIAlertView()
+                        alert.title = "Oops!"
+                        alert.message = "A previously used letter was generated. Please pick another letter."
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                        self.pickLetterButton.enabled = true
+                        self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        
+        case "4":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        case "5":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+        
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        case "6":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter5!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+        
+        case "7":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter5!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter6!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        case "8":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter5!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter6!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter7!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
 
-        
-        
-        
+        case "9":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter5!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter6!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter7!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter8!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        case "10":
+            var roundLetter = self.letterLabel.text!
+            switch(roundLetter){
+            case "\(letter1)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter2!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter3!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter4!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter5!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter6!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter7!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter8!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            case "\(letter9!)":
+                let alert = UIAlertView()
+                alert.title = "Oops!"
+                alert.message = "A previously used letter was generated. Please pick another letter."
+                alert.addButtonWithTitle("Ok")
+                alert.show()
+                self.pickLetterButton.enabled = true
+                self.gameViewButton.enabled = false
+                
+            default:
+                self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                
+            }
+            
+        default:
+            self.performSegueWithIdentifier("gameViewSegue", sender: self)
     }
     
+        
+        
+}
+    
     func randomNumber() -> Int {
-        //var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-        var arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
-        var randNum = nums[arrayKey]
-        while nums.count > 0 {
-            arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
-            randNum = nums[arrayKey]
-            
-            // make sure the number isnt repeated
-            nums.removeAtIndex(arrayKey)
-        }
+
+        var randNum = Int(arc4random_uniform(UInt32(26)))
+        
         return randNum
     }
     
@@ -316,28 +800,6 @@ class success: UIViewController {
                         self.gameViewButton.enabled = true
                         
                         
-                        //println("Random number is: \(randNum)")
-                        
-                        //var arrayKey = Int(arc4random_uniform(UInt32(self.nums.count)))
-                        
-                        
-                            //let randNum = self.nums[arrayKey]
-                            //println("Random number is: \(arrayKey)")
-                        
-//                        var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
-//                        
-//                        while nums.count > 0 {
-//                            
-//                            // random key from array
-//                            let arrayKey = Int(arc4random_uniform(UInt32(nums.count)))
-//                            
-//                            // your random number
-//                            let randNum = nums[arrayKey] 
-//                            
-//                            // make sure the number isnt repeated
-//                            nums.removeAtIndex(arrayKey)
-//                        }
-
                         var randNum = self.randomNumber()
                         println("Random number is: \(randNum)")
                             
@@ -354,7 +816,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -370,7 +832,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -386,7 +848,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -403,7 +865,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                                             }
                             
                             if Int(randNum) == 4 {
@@ -418,7 +880,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -433,7 +895,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -449,7 +911,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -465,7 +927,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -481,7 +943,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -498,7 +960,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             if Int(randNum) == 10 {
@@ -514,7 +976,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -530,7 +992,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -546,7 +1008,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -563,7 +1025,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -579,7 +1041,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -594,7 +1056,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -609,7 +1071,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -625,7 +1087,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -641,7 +1103,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -657,7 +1119,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -674,7 +1136,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -690,7 +1152,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -706,7 +1168,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -722,7 +1184,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
                             
@@ -737,7 +1199,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                                 
                             }
@@ -754,7 +1216,7 @@ class success: UIViewController {
                                 var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
-                                println("\(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())")
+                                
                                 
                             }
 
@@ -778,8 +1240,8 @@ class success: UIViewController {
                                     (success: Bool, error: NSError!) -> Void in
                                     if (success) {
                                         let alert = UIAlertView()
-                                        alert.title = "Success"
-                                        alert.message = "A new random letter has been generated! Please tap on My Game View to continue."
+                                        alert.title = "Letter Generated"
+                                        alert.message = "A random letter has been generated! Please tap on My Game View to continue."
                                         alert.addButtonWithTitle("OK")
                                         alert.show()
                                     } else if error != nil {
