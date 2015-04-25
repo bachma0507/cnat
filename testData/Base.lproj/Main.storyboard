@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYC-ES-KG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="475"/>
+            <point key="canvasLocation" x="392" y="-78"/>
         </scene>
         <!--Game Screen-->
         <scene sceneID="gBI-w6-6IP">
@@ -397,7 +397,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="uuz-YX-Hye" kind="presentation" id="TIH-Ri-1KF"/>
+                                                    <action selector="mainViewButtonPressed:" destination="4LJ-4q-ocu" eventType="touchUpInside" id="ITf-DA-H3l"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-qW-5W9">
@@ -508,6 +508,7 @@
                         <outlet property="score9Textfield" destination="jVu-gJ-Dbo" id="nZt-XF-aEe"/>
                         <outlet property="timerLabel" destination="PxM-0C-FIc" id="zDr-M1-Xu4"/>
                         <segue destination="xqi-gl-Dgn" kind="presentation" identifier="role" id="CFl-7a-q0R"/>
+                        <segue destination="uuz-YX-Hye" kind="presentation" identifier="mainViewSegue" id="PZZ-nz-R4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4t0-P9-OkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -845,7 +846,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="CFl-7a-q0R"/>
         <segue reference="5n8-89-YYe"/>
-        <segue reference="TIH-Ri-1KF"/>
+        <segue reference="PZZ-nz-R4K"/>
         <segue reference="f8x-uM-omE"/>
         <segue reference="EYf-7t-mpi"/>
     </inferredMetricsTieBreakers>

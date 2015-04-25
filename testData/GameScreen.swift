@@ -18,6 +18,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
     
+    var notReady = true
     
     var textField: UITextField!
     
@@ -73,6 +74,34 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
     
     @IBOutlet var roundLabel: UILabel!
     
+    @IBAction func mainViewButtonPressed(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("mainViewSegue", sender: self)
+        
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo: PFUser.currentUser())
+        
+        query.getFirstObjectInBackgroundWithBlock {
+            (myGame: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                NSLog("%@", error)
+            } else {
+                myGame["playerindicator"] = "no"
+                myGame.saveInBackgroundWithBlock {
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) {
+                        // The object has been saved.
+                    } else if error != nil {
+                        let errorString = "\(error)"
+                        SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                        // Show the errorString somewhere and let the user try again.
+                    }
+                }
+                
+            }
+        }
+        
+    }
     @IBAction func playerRoleButtonPressed(sender: AnyObject) {
         
         self.performSegueWithIdentifier("role", sender: self)
@@ -155,7 +184,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
             score1Int = 0
         }
         
-        println("Value of score1Int is \(score1Int!)")
+        //println("Value of score1Int is \(score1Int!)")
         
         var score2 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("2")) as? String
         var score2Int = score2?.toInt()
@@ -165,7 +194,7 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
             score2Int = 0
         }
         
-        println("Value of score2Int is \(score2Int!)")
+        //println("Value of score2Int is \(score2Int!)")
         
         var score3 : String? = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as? String
         var score3Int = score3?.toInt()
@@ -266,10 +295,55 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
         })
         
         calculateScoreButton.hidden = true
+        mainViewButton.enabled = true
+        newButton.enabled = true
     }
     
     
 //MARK: Timer functions
+    
+    var secondsNew = 5
+    
+    var timerNew = NSTimer()
+    
+    var countNew = 0
+    
+    func updateTimeNew(){
+        
+        
+        countNew++
+        
+        if countNew == secondsNew {
+            
+            self.newButton.enabled = true
+        }
+        
+        stopNew(self)
+        
+    }
+    
+    func pauseNew(sender: AnyObject) {
+        
+        timerNew.invalidate()
+        
+    }
+    
+    func stopNew(sender: AnyObject) {
+        
+        timerNew.invalidate()
+        
+        countNew = 0
+        
+        
+    }
+    
+    func playNew(sender: AnyObject) {
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimeNew"), userInfo: nil, repeats: true)
+        
+    }
+    
+    //var secondsNew = 5
     
     var timer = NSTimer()
     
@@ -326,8 +400,8 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
             field9Textfield.enabled = false
             field10Textfield.enabled = false
             
-            newButton.enabled = true
-            mainViewButton.enabled = true
+            newButton.enabled = false
+            mainViewButton.enabled = false
             calculateScoreButton.hidden = false
             
             var query = PFQuery(className: "game")
@@ -536,9 +610,39 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
 
     //MARK: Start new round
     
+    
     @IBAction func updateButtonPressed(sender: AnyObject) {
         
         calculateScoreButton.hidden = true
+        
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo:PFUser.currentUser())
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if !(error != nil) {
+                for object in objects {
+                    
+                    var myIndicator = object["playerindicator"]! as! String
+                    println("player indicator is \(myIndicator)")
+                    
+                    if myIndicator == "no" || myIndicator == "" {
+                        
+                        let alert = UIAlertView()
+                        alert.title = "Oops!"
+                        alert.message = "Please wait on lead player to pick a letter for the next round."
+                        alert.addButtonWithTitle("Ok")
+                        alert.show()
+                        
+                    }
+                    else{
+                    
+//                    }
+//                    
+//                }
+//            }
+//        }
+
         
         
         var query = PFQuery(className: "game")
@@ -586,66 +690,73 @@ class GameScreen: UIViewController, UITextFieldDelegate, GKGameCenterControllerD
         }
         
         
-        if letterLabel.text != nil {
+        if self.letterLabel.text != nil {
             
-            stop(self)
-            play(self)
+            self.stop(self)
+            self.play(self)
             
         }
         
-        field1Textfield.enabled = true
-        field2Textfield.enabled = true
-        field3Textfield.enabled = true
-        field4Textfield.enabled = true
-        field5Textfield.enabled = true
-        field6Textfield.enabled = true
-        field7Textfield.enabled = true
-        field8Textfield.enabled = true
-        field9Textfield.enabled = true
-        field10Textfield.enabled = true
+        self.field1Textfield.enabled = true
+        self.field2Textfield.enabled = true
+        self.field3Textfield.enabled = true
+        self.field4Textfield.enabled = true
+        self.field5Textfield.enabled = true
+        self.field6Textfield.enabled = true
+        self.field7Textfield.enabled = true
+        self.field8Textfield.enabled = true
+        self.field9Textfield.enabled = true
+        self.field10Textfield.enabled = true
         
-        field1Textfield.text = nil
-        score1Textfield.text = nil
-        score1Textfield.hidden = true
+        self.field1Textfield.text = nil
+        self.score1Textfield.text = nil
+        self.score1Textfield.hidden = true
         
-        field2Textfield.text = nil
-        score2Textfield.text = nil
-        score2Textfield.hidden = true
+        self.field2Textfield.text = nil
+        self.score2Textfield.text = nil
+        self.score2Textfield.hidden = true
         
-        field3Textfield.text = nil
-        score3Textfield.text = nil
-        score3Textfield.hidden = true
+        self.field3Textfield.text = nil
+        self.score3Textfield.text = nil
+        self.score3Textfield.hidden = true
         
-        field4Textfield.text = nil
-        score4Textfield.text = nil
-        score4Textfield.hidden = true
+        self.field4Textfield.text = nil
+        self.score4Textfield.text = nil
+        self.score4Textfield.hidden = true
         
-        field5Textfield.text = nil
-        score5Textfield.text = nil
-        score5Textfield.hidden = true
+        self.field5Textfield.text = nil
+        self.score5Textfield.text = nil
+        self.score5Textfield.hidden = true
         
-        field6Textfield.text = nil
-        score6Textfield.text = nil
-        score6Textfield.hidden = true
+        self.field6Textfield.text = nil
+        self.score6Textfield.text = nil
+        self.score6Textfield.hidden = true
         
-        field7Textfield.text = nil
-        score7Textfield.text = nil
-        score7Textfield.hidden = true
+        self.field7Textfield.text = nil
+        self.score7Textfield.text = nil
+        self.score7Textfield.hidden = true
         
-        field8Textfield.text = nil
-        score8Textfield.text = nil
-        score8Textfield.hidden = true
+        self.field8Textfield.text = nil
+        self.score8Textfield.text = nil
+        self.score8Textfield.hidden = true
         
-        field9Textfield.text = nil
-        score9Textfield.text = nil
-        score9Textfield.hidden = true
+        self.field9Textfield.text = nil
+        self.score9Textfield.text = nil
+        self.score9Textfield.hidden = true
         
-        field10Textfield.text = nil
-        score10Textfield.text = nil
-        score10Textfield.hidden = true
+        self.field10Textfield.text = nil
+        self.score10Textfield.text = nil
+        self.score10Textfield.hidden = true
         
-    }
+                    }
     
+                }
+            }
+}
+
+
+    }
+
     override func viewWillAppear(animated: Bool) {
         if let viewContr2 = self.presentingViewController as? ChoiceScreen {
             self.mainViewButton.hidden = true

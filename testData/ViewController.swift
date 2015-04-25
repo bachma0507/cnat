@@ -42,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             } else if error != nil {
                 let errorString = "\(error)"
                 SCLAlertView().showError("Oops...", subTitle:"Invalid login. Please try again, or register this Game Name.", closeButtonTitle:"OK")
+                //SCLAlertView().showError("Oops...", subTitle:"\(errorString)", closeButtonTitle:"OK")
                 // Show the errorString somewhere and let the user try again.
             }
             }
@@ -131,9 +132,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityStatusChanged", name: "ReachStatusChanged", object: nil)
+        
+        self.reachabilityStatusChanged()
         
         var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -161,6 +167,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.usernameTextField.text = username
         }*/
         
+    }
+    
+    func reachabilityStatusChanged(){
+        
+        if reachabilityStatus == kNOTREACHABLE{
+            
+            let alert = UIAlertView()
+            alert.title = "Network Error"
+            alert.message = "No internet access! Game requires internet access."
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            //SCLAlertView().showError("Network Error...", subTitle:"No internet access!", closeButtonTitle:"OK")
+            
+        }
+        
+    }
+    
+    deinit{
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReachStatusChanged", object: nil)
     }
     
     func DismissKeyboard(){

@@ -12,6 +12,7 @@
 		4C3C66FD1A82C2AB004A38C4 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FC1A82C2AB004A38C4 /* GameScreen.swift */; };
 		4C3C67001A83CBA5004A38C4 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */; };
 		4C3C67021A83DA29004A38C4 /* fieldnames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3C67011A83DA29004A38C4 /* fieldnames.swift */; };
+		4C890A281AEAE12D006F189D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C890A271AEAE12D006F189D /* Reachability.m */; };
 		4C8C985F1A8564B600257700 /* AddMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C985E1A8564B600257700 /* AddMore.swift */; };
 		4CB69B531AC59E2900EC93B3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB69B521AC59E2900EC93B3 /* Settings.swift */; };
 		4CB69B891AD712B700EC93B3 /* keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB69B881AD712B700EC93B3 /* keychain.swift */; };
@@ -54,6 +55,8 @@
 		4C3C66FC1A82C2AB004A38C4 /* GameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		4C3C66FF1A83CBA5004A38C4 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		4C3C67011A83DA29004A38C4 /* fieldnames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fieldnames.swift; sourceTree = "<group>"; };
+		4C890A261AEAE12D006F189D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4C890A271AEAE12D006F189D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4C8C985E1A8564B600257700 /* AddMore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMore.swift; sourceTree = "<group>"; };
 		4CB69B521AC59E2900EC93B3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4CB69B881AD712B700EC93B3 /* keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keychain.swift; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		C44CF2851A203B730099E1BE /* testData */ = {
 			isa = PBXGroup;
 			children = (
+				4C890A261AEAE12D006F189D /* Reachability.h */,
+				4C890A271AEAE12D006F189D /* Reachability.m */,
 				C44CF2881A203B730099E1BE /* AppDelegate.swift */,
 				C44CF28D1A203B730099E1BE /* ViewController.swift */,
 				C44CF28F1A203B730099E1BE /* Main.storyboard */,
@@ -313,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C890A281AEAE12D006F189D /* Reachability.m in Sources */,
 				4C8C985F1A8564B600257700 /* AddMore.swift in Sources */,
 				C44CF2B31A203F5B0099E1BE /* testDataCustom.m in Sources */,
 				4C3C66FD1A82C2AB004A38C4 /* GameScreen.swift in Sources */,

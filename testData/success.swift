@@ -167,6 +167,17 @@ class success: UIViewController {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("9")
         NSUserDefaults.standardUserDefaults().removeObjectForKey("10")
         
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round1")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round2")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round3")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round4")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round5")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round6")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round7")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round8")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round9")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("Round10")
+        
         var query = PFQuery(className: "game")
         query.whereKey("player", equalTo: PFUser.currentUser())
         
@@ -218,55 +229,81 @@ class success: UIViewController {
     
     func checkForDupeLetter(){
         
-        var letter1: String! = (NSUserDefaults.standardUserDefaults().objectForKey("1")) as! String
+        var query = PFQuery(className: "game")
+        query.whereKey("player", equalTo: PFUser.currentUser())
+            query.getFirstObjectInBackgroundWithBlock {
+                (myGame: PFObject!, error: NSError!) -> Void in
+                if error != nil {
+                    NSLog("%@", error)
+                } else {
+                    
+                    
+//                    myGame.saveInBackgroundWithBlock {
+//                        (success: Bool, error: NSError!) -> Void in
+//                        if (success) {
+//                            // The object has been saved.
+//                        } else if error != nil {
+//                            let errorString = "\(error)"
+//                            SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+//                            // Show the errorString somewhere and let the user try again.
+//                        }
+//                    }
+//
+//                    
+//                }
+//                
+//        }
+        
+        var letter1: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round1")) as! String
         println("letter1 is \(letter1)")
-        var letter2: String? = (NSUserDefaults.standardUserDefaults().objectForKey("2")) as? String
+        var letter2: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round2")) as? String
         if letter2 != nil{
         println("letter2 is \(letter2)")
         }
-        var letter3: String? = (NSUserDefaults.standardUserDefaults().objectForKey("3")) as? String
+        var letter3: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round3")) as? String
         if letter3 != nil{
             println("letter3 is \(letter3)")
         }
-        var letter4: String? = (NSUserDefaults.standardUserDefaults().objectForKey("4")) as? String
+        var letter4: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round4")) as? String
         if letter4 != nil{
             println("letter4 is \(letter4)")
         }
-        var letter5: String? = (NSUserDefaults.standardUserDefaults().objectForKey("5")) as? String
+        var letter5: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round5")) as? String
         if letter5 != nil{
             println("letter5 is \(letter5)")
         }
-        var letter6: String? = (NSUserDefaults.standardUserDefaults().objectForKey("6")) as? String
+        var letter6: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round6")) as? String
         if letter6 != nil{
             println("letter6 is \(letter6)")
         }
-        var letter7: String? = (NSUserDefaults.standardUserDefaults().objectForKey("7")) as? String
+        var letter7: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round7")) as? String
         if letter7 != nil{
             println("letter7 is \(letter7)")
         }
-        var letter8: String? = (NSUserDefaults.standardUserDefaults().objectForKey("8")) as? String
+        var letter8: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round8")) as? String
         if letter8 != nil{
             println("letter8 is \(letter8)")
         }
-        var letter9: String? = (NSUserDefaults.standardUserDefaults().objectForKey("9")) as? String
+        var letter9: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round9")) as? String
         if letter9 != nil{
             println("letter9 is \(letter9)")
         }
-        var letter10: String? = (NSUserDefaults.standardUserDefaults().objectForKey("10")) as? String
+        var letter10: String? = (NSUserDefaults.standardUserDefaults().objectForKey("Round10")) as? String
         if letter10 != nil{
             println("letter10 is \(letter10)")
         }
 
         
-        println("Round is \(roundLabel.text!)")
+        println("Round is \(self.roundLabel.text!)")
         println("Letter is \(self.letterLabel.text!)")
         
-        var roundNumber = roundLabel.text!
+        var roundNumber = self.roundLabel.text!
         
         switch(roundNumber){
             
         case "1":
             self.performSegueWithIdentifier("gameViewSegue", sender: self)
+            myGame["playerindicator"] = "yes"
             
         case "2":
             var roundLetter = self.letterLabel.text!
@@ -281,6 +318,7 @@ class success: UIViewController {
                     self.gameViewButton.enabled = false
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
             }
             
         case "3":
@@ -306,6 +344,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
@@ -342,6 +381,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
@@ -388,6 +428,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
@@ -442,6 +483,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
         
@@ -504,6 +546,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
@@ -575,6 +618,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
 
@@ -655,6 +699,7 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
@@ -744,17 +789,33 @@ class success: UIViewController {
                 
             default:
                 self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
                 
             }
             
         default:
             self.performSegueWithIdentifier("gameViewSegue", sender: self)
+                myGame["playerindicator"] = "yes"
     }
     
+        myGame.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // The object has been saved.
+            } else if error != nil {
+                let errorString = "\(error)"
+                SCLAlertView().showError("Oops...", subTitle:"There was an error: \(errorString)", closeButtonTitle:"OK")
+                // Show the errorString somewhere and let the user try again.
+            }
+        }
         
         
-}
+    }
     
+}
+
+}
+
     func randomNumber() -> Int {
 
         var randNum = Int(arc4random_uniform(UInt32(26)))
@@ -810,10 +871,10 @@ class success: UIViewController {
                                 
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -826,10 +887,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "B"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -842,10 +903,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "C"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -859,10 +920,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -874,10 +935,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -889,10 +950,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "F"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -905,10 +966,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "G"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -921,10 +982,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "H"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -937,10 +998,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "I"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -954,10 +1015,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -970,10 +1031,10 @@ class success: UIViewController {
                                 
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -986,10 +1047,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "L"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1002,10 +1063,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "M"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1019,10 +1080,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1035,10 +1096,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1050,10 +1111,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "P"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1065,10 +1126,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "Q"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1081,10 +1142,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "R"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1097,10 +1158,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "S"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1113,10 +1174,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "T"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1130,10 +1191,10 @@ class success: UIViewController {
                                 
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1146,10 +1207,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1162,10 +1223,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1178,10 +1239,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1193,10 +1254,10 @@ class success: UIViewController {
                                 self.letterLabel.text = "Y"
                                 println(self.letterLabel.text!)
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
@@ -1210,10 +1271,10 @@ class success: UIViewController {
                                 println(self.letterLabel.text!)
                                 
                                 
-                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "\(self.roundLabel.text!)")
+                                NSUserDefaults.standardUserDefaults().setObject("\(self.letterLabel.text!)", forKey: "Round\(self.roundLabel.text!)")
                                 NSUserDefaults.standardUserDefaults().synchronize()
                                 
-                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("\(self.roundLabel.text!)")) as! String
+                                var letter: String! = (NSUserDefaults.standardUserDefaults().objectForKey("Round\(self.roundLabel.text!)")) as! String
                                 println("Stored: \(letter!) for Round \(self.roundLabel.text!)")
                                 
                                 
